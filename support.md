@@ -37,13 +37,6 @@ title: 技术支持
 
 如果有关于iOS的问题我们也可以一起讨论
 
-
-<h3> 感谢您的打赏 </h3> 
-
-![](/images/payimg/alipayimg.jpg)
-
-![](/images/payimg/weipayimg.jpg)
-
 <h3> 如何联系到我 </h3>
 
 <p> 
