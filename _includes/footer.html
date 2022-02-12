@@ -85,21 +85,27 @@
 
         </div>
 
-        <div id="container"></div>
-        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-        <script>
-        var gitment = new Gitment({
-        id: '页面 ID', // 可选。默认为 location.href
-        owner: 'liwenju0',
+
+<!-- Link Gitalk 的支持文件  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+<script type="text/javascript" src="/assets/js/md5.min.js"></script>
+<div id="gitalk-container"></div>     
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+ 
+    // gitalk的主要参数
+        clientID: '86b26f55ce44455d1ba0',
+        clientSecret: 'dd15b20a063cc83f8c8d62c8d28cb6f83a603bf2',
         repo: 'liwenju0.github.io',
-        oauth: {
-            client_id: '86b26f55ce44455d1ba0',
-            client_secret: 'dd15b20a063cc83f8c8d62c8d28cb6f83a603bf2',
-        },
-        })
-        gitment.render('container')
-        </script>
+        owner: 'GitHub的用户名',
+        admin: ['liwenju0'],
+        id: md5(location.pathname),
+        
+    });
+    gitalk.render('gitalk-container');
+</script> 
+<!-- Gitalk end -->
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
