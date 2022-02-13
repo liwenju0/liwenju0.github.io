@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 关于我 
+title: 友情链接
 ---
 
 1、[谭升的博客](https://face2ai.com/)  主要是cuda，AI数学基础等
