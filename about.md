@@ -6,7 +6,8 @@ title: 关于我
 
 我的联系方式：
 - 微信 
-- ![](images/MyWechat.jpeg)
+  
+  ![](images/MyWechat.jpeg)
 - 邮箱
   
   liwenjudetiankong@126.com
