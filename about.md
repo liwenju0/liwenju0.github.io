@@ -8,6 +8,3 @@ title: 关于我
 - 微信 
   
   ![](images/MyWechat.jpeg)
-- 邮箱
-  
-  liwenjudetiankong@126.com
