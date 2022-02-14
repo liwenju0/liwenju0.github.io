@@ -9,3 +9,5 @@ title: 友情链接
 
 3、[铁蕾的博客](http://zhangtielei.com/)  铁蕾的博客，主要是分布式系统，后端等
 
+4、[巩鹏的博客](https://blog.lucida.me/)  巩鹏，程序员必读书单作者
+
