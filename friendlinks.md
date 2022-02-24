@@ -11,3 +11,5 @@ title: 友情链接
 
 4、[巩鹏的博客](https://blog.lucida.me/)  巩鹏，程序员必读书单作者
 
+5、[Nvidia Cuda官方博客](https://developer.nvidia.com/zh-cn/blog) cuda最新进展
+
