@@ -13,3 +13,5 @@ title: 友情链接
 
 5、[Nvidia Cuda官方博客](https://developer.nvidia.com/zh-cn/blog) cuda最新进展
 
+
+6、[刘建平博客](https://www.cnblogs.com/pinard/) 数学统计学，数据挖掘，机器学习，大数据平台，大数据平台应用开发，大数据可视化
