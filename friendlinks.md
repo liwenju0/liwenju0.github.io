@@ -15,3 +15,5 @@ title: 友情链接
 
 
 6、[刘建平博客](https://www.cnblogs.com/pinard/) 数学统计学，数据挖掘，机器学习，大数据平台，大数据平台应用开发，大数据可视化
+
+7、 [唐巧的博客](https://blog.devtang.com/)   iOS工程师，猿辅导工作
