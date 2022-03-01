@@ -13,6 +13,10 @@ keras 2.3.1
 
 Layer类所在目录：keras.engine.base_layer.py
 
+
+<!--more-->
+
+
 # 阅读策略
 一行一行读，力争搞清楚每一行的含义
 

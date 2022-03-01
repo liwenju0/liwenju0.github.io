@@ -13,6 +13,9 @@ published: true
 
 这是一个静态方法，注释中说，在self._network_nodes中内部使用。可是搜不到这个属性。大概就是为Layer生成一个唯一的名字。查找了该方法的应用。主要是在Network这个类中。
 
+<!--more-->
+
+
 于是首先查看了一下Network的说明：
 ![2022-02-21-keras中Layer源码解读(下)-20220221175958](https://cdn.jsdelivr.net/gh/liwenju0/blog_pictures@main/pics/2022-02-21-keras中Layer源码解读(下)-20220221175958.png)
 

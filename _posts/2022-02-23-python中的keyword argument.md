@@ -14,6 +14,9 @@ keyword arguments有两个含义。
 
 唯一的要求是，这些key=value要在没有名字的positional arguments后面。
 
+<!--more-->
+
+
 ## 二、函数定义时的keyword arguments
 
 这里的含义是，你可以在定义函数时，让函数能接受带名字的参数，但是你并不需要指明这些名字。一般通过**kwargs进行明确。为了区别这些参数和arg2=0这类含有默认值的positional arguments。可以称它为纯keyword arguments。
