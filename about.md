@@ -11,7 +11,7 @@ Gender: Male
 
 City: Beijing, China   
 
-Career: 华图 (now) | 阿里  
+Career: 华图 (now) <- 阿里  
 
 Education: NUDT  
 
@@ -19,7 +19,7 @@ Education: NUDT
 
 #### 2.My Links
 GitHub: <https://github.com/liwenju0>{:target="_blank"} 
- 
+
 我的微信:milter007
 
 
