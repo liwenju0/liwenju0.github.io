@@ -2,7 +2,8 @@
 layout: post
 title:  "keras中Layer源码解读（上）"
 date:   2022-02-21 10:04:08 +0800
-tags: 深度学习
+category: "AI"
+published: true
 ---
 
 keras对神经网络的抽象，都在Layer中，Model也是一种特殊的Layer。今天开始，我们就来看看Layer的源代码。

@@ -2,7 +2,8 @@
 layout: post
 title:  "python中的keyword argument"
 date:   2022-02-23 10:04:08 +0800
-tags: python
+category: "计算机基础"
+published: true
 ---
 
 keyword arguments有两个含义。

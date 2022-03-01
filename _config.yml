@@ -1,79 +1,30 @@
-# Basic
-title: 李文举
-subtitle: 个人站
-description: 我的一亩三分地，有技术文章，有生活感悟
-# 头像里面的标题
-avatarTitle: liwenju
-# 头像里面的描述
-avatarDesc: 自然语言处理 / python
-url: "https://liwenju0.github.io"
+markdown: kramdown
+highlighter: pygments
+highlight: true
+permalink: /posts/:title.html
+excerpt_separator: "<!--more-->"
 
-# 博客是否自动生成目录，false为不生成
-enableToc: true
+github: liwenju0
+author: "李文举"
+name: "文举的个人博客"
+url: http://liwenju0.github.com
+domain: liwenju0.github.com
+all_categories: [
+["Asia", "人工智能","/posts/ai.html"],
+["basis", "计算机基础","/posts/basis.html"],
+["essay", "生活随笔","/posts/essay.html"],
+["trade", "投资","/posts/invest.html"], 
+["about", "关于我","/about.html"]
+]
 
-# Comment
-comment:
-    # livere: MTAyMC81MDk5NC8yNzQ3Ng  # https://www.livere.com
-    # disqus: leopard
-    # uyan: 2143225  # 有言id,登录有言官网申请
-
-# Social
-social:
-    weibo: 6028829956 
-    github: liwenju0
-    zhihu: li-dan-ran-71
-    # juejin: xxx
-    # jianshu: 2ada30d8d0f7
-    # twitter: 
-    mail: liwenjudetiankong@126.com
+paginate: 8
+paginate_path: "posts/page:num"
+timezone: Asia/Shanghai
 
 
-# 百度统计 
-# 使用博客模板请去掉或者更换 id 
-baidu:
-    id: 879b2c30858d7f64a221c80879eb2123  
+collections:
+  docs:
+    output: true
 
-# Google Analytics
-# 使用博客模板请去掉或者更换 id
-ga:
-    id: G-7YXK254XCX
-    host: auto  
-
-
-# 《----------------- 上面的信息修改成你自己的 ---------------------------》
-#
-#
-#  _post/ 下的文章更换成你自己的文章
-#  帮忙star一下，感谢~😆 地址： https://github.com/leopardpan/leopardpan.github.io
-#
-#
-# 《--------------- 下面的信息可以自行选择是否修改 ------------------------》
-
-
-permalink: /:year/:month/:title/
-# Format
-highlighter: rouge
-
-textColor: #FF0000
-
-# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
-cover_color: clear
-
-# The blog button should not be removed.
-blog_button:
-    title: 博客主页
-
-# Navigation buttons in the front page.s
-nav:
-    - {title: 所有文章, description: archive, url: '/archive'}   
-    - {title: 标签, description: tags, url: '/tags'}    
-    - {title: 友情链接, description: friendlinks, url: '/friendlinks'}    
-    - {title: 关于我, description: about, url: '/about'}   
-    
-
-# Pagination
-gems: [jekyll-paginate,jekyll-sitemap]
-paginate: 20
-paginate_path: "page/:num/"
-
-
+gems:
+ - jekyll-paginate

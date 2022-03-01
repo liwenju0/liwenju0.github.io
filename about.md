@@ -1,26 +1,20 @@
 ---
-layout: page
-title: 关于我 
+layout: default
+title: "关于：About"
 ---
+Welcome to visit my blog!
 
-一名工作4年的自然语言处理算法工程师。
+#### 1.Personal Info
+Name: Wenju Li (李文举)  
+Gender: Male  
+City: Beijing, China   
+Career: 华图 (now) | 阿里 | 
+Education: NUDT 
+爱好: 机器学习，技术写作，交易，阅读
 
-- 工作经历
-
-  2019.07-至今  北京华图宏阳网络科技有限公司算法负责人
-  
-  2018.05-2019.07  阿里巴巴达摩院人工智能实验室高级算法工程师（现天猫精灵事业部）
+#### 2.My Links
+GitHub: <https://github.com/liwenju0>{:target="_blank"}  
+我的微信:milter007
 
 
-
-
-- 教育经历：
-  
-  2003-2007 解放军国防科技大学-------- 本科
-
-  2010-2013 解放军国防科技大学-------- 硕士
-
-- 联系方式：  
-  微信：milter007
-
-  邮箱: liwenjudetiankong@126.com
+{% include comment.html %}

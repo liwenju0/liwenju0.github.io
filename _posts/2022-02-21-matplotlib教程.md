@@ -2,7 +2,8 @@
 layout: post
 title:  "matplotlib教程"
 date:   2022-02-21 10:04:08 +0800
-tags: python
+category: "计算机基础"
+published: true
 ---
 
 matplotlib是优秀的python画图工具，功能十分强大，但是使用却很复杂。你有没有如下的经历:

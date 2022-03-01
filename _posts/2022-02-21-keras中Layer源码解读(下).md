@@ -2,7 +2,8 @@
 layout: post
 title:  "keras中Layer源码解读（下）"
 date:   2022-02-21 10:04:08 +0800
-tags: 深度学习
+category: "AI"
+published: true
 ---
 
 今天继续读keras中的Layer源码
