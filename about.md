@@ -8,7 +8,7 @@ Welcome to visit my blog!
 Name: Wenju Li (李文举)  
 Gender: Male  
 City: Beijing, China   
-Career: 华图 (now) | 阿里 | 
+Career: 华图 (now) | 阿里
 Education: NUDT 
 爱好: 机器学习，技术写作，交易，阅读
 
