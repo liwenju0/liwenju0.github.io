@@ -29,5 +29,5 @@ collections:
 gems:
  - jekyll-paginate
 
- plugins:
+plugins:
   - jekyll-feed
