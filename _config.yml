@@ -28,6 +28,5 @@ collections:
 
 gems:
  - jekyll-paginate
+ - jekyll-feed
 
-plugins:
-  - jekyll-feed
