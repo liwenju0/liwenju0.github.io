@@ -10,7 +10,7 @@ name: "文举的个人博客"
 url: http://liwenju0.github.com
 domain: liwenju0.github.com
 all_categories: [
-["Asia", "人工智能","/posts/ai.html"],
+["ai", "人工智能","/posts/ai.html"],
 ["basis", "计算机基础","/posts/basis.html"],
 ["essay", "生活随笔","/posts/essay.html"],
 ["trade", "投资","/posts/invest.html"], 
