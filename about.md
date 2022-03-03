@@ -13,7 +13,7 @@ City: Beijing, China
 
 Career: 华图 (now) <- 阿里  
 
-Education: NUDT  
+Education: NUDT (国防科学技术大学) 
 
 爱好: 机器学习，技术写作，交易，阅读  
 
