@@ -9,7 +9,7 @@ published: true
 > 神经网络的int8计算是近来神经网络计算优化的方向之一。
 本文介绍intel针对cnn的int8量化方案。该方案原理简单直观，并且集成在了tensorrt中，操作实验方便。
 
-<!-- more -->
+<!--more-->
 
 # 前置知识
 理解cnn的量化，首先需要理解cnn的kernel计算过程。
