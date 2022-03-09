@@ -1,2 +1,2 @@
-# liwenju0.github.com
+# liwenju0.com
 文举的博客
