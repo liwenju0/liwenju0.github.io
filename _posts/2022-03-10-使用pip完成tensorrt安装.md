@@ -54,7 +54,8 @@ assert tensorrt.Builder(tensorrt.Logger())
 
 
 Refs:
-https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html
+
+[https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html](https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html)
 
 
 
