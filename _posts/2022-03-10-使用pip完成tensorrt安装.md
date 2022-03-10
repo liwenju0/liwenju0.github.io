@@ -53,6 +53,10 @@ assert tensorrt.Builder(tensorrt.Logger())
 可以尝试运行tensorrt提供的sample，应该都可以成功。
 
 
+Refs:
+https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html
+
+
 
 
   
