@@ -146,6 +146,8 @@ def profile_trt(engine, imagepath,batch_size):
     return results.transpose(1,2,0)
 ```
 
+另外一个简单使用tensorrt  动态shape支持的方法是使用[torch2trt_dynamic](https://github.com/grimoire/torch2trt_dynamic)。当使用情景比较简单时，可以尝试。
+
 
 Refs:
 
