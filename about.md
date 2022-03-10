@@ -2,25 +2,24 @@
 layout: default
 title: "关于：About"
 ---
-Welcome to visit my blog!
 
-#### 1.Personal Info
-Name: Wenju Li (李文举)  
+#### 1.基本信息
+姓名: Wenju Li (李文举)  
 
-Gender: Male  
+性别: Male  
 
-City: Beijing, China   
+城市: Beijing, China   
 
-Career: 华图 (now) <- 阿里  
+工作经历: 华图 (now) <- 阿里  
 
-Education: NUDT (国防科学技术大学) 
+教育经历: NUDT (国防科学技术大学) 
 
 爱好: 机器学习，技术写作，交易，阅读  
 
-#### 2.My Links
+#### 2.联系方式
 GitHub: <https://github.com/liwenju0>{:target="_blank"} 
 
-我的微信:milter007
+微信:milter007
 
 
 {% include comment.html %}
