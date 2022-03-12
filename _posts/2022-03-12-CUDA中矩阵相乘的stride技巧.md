@@ -9,6 +9,8 @@ published: true
 ### 1、没有stride技巧时的情况
 使用cuda计算矩阵相乘时，核心的思路是构建一个二维的grid和一个二维的block，使用适当的映射方法，将block映射到结果矩阵中相应的块。然后编写kernel。如下图所示：
 
+<!--more-->
+
 ![2022-03-12-CUDA中矩阵相乘的stride技巧-20220312110956](https://cdn.jsdelivr.net/gh/liwenju0/blog_pictures@main/pics/2022-03-12-CUDA中矩阵相乘的stride技巧-20220312110956.png)
 
 上图的映射，可以认为一个线程的block恰好映射一个同样大小的结果矩阵C中的块。
