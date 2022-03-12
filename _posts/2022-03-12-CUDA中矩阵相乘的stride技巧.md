@@ -19,7 +19,11 @@ published: true
 
 ![2022-03-12-CUDA中矩阵相乘的stride技巧-IMG_DA018F0A46F9-1](https://cdn.jsdelivr.net/gh/liwenju0/blog_pictures@main/pics/2022-03-12-CUDA中矩阵相乘的stride技巧-IMG_DA018F0A46F9-1.jpeg)
 
-原先一对一的关系现在变成了一对四。stride是2，这样，就减少了线程块的个数。
+原先一对一的关系现在变成了一对四，stride是2，这样，就减少了线程块的个数。
+
+对于每个线程来说，它所负责计算的C元素的数量也从原来的1个，变成了stride X stride个。
+
 
 使用这种优化方法，可以提高计算访存比，但较少的block，也可能带来活跃warp减少，所以stride的最佳值，需要通过具体实验获得。
+
 
