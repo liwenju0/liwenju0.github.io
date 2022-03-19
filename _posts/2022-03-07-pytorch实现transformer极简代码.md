@@ -193,11 +193,12 @@ Decoder Layer 中两次调用，第一次传入的全是 dec_inputs，
 ### 8、FeedForward Layer
 ```python
 class PoswiseFeedForwardNet(nn.Module):
-    def __init__(self):
+    def __init__(self, dropout=0.1):
         super(PoswiseFeedForwardNet, self).__init__()
         self.fc = nn.Sequential(
             nn.Linear(d_model, d_ff, bias=False),
             nn.ReLU(),
+            nn.Dropout(dropout),
             nn.Linear(d_ff, d_model, bias=False)
         )
     def forward(self, inputs):
@@ -212,10 +213,13 @@ class PoswiseFeedForwardNet(nn.Module):
 ### 9、EncoderLayer
 ```python
 class EncoderLayer(nn.Module):
-    def __init__(self):
+    def __init__(self,dropout=0.1):
         super(EncoderLayer, self).__init__()
         self.enc_self_attn = MultiHeadAttention()
         self.pos_ffn = PoswiseFeedForwardNet()
+        self.dropout1 = nn.Dropout(dropout)
+        self.dropout2 = nn.Dropout(dropout)
+
 
     def forward(self, enc_inputs, enc_self_attn_mask):
         '''
@@ -224,7 +228,9 @@ class EncoderLayer(nn.Module):
         '''
         # enc_outputs: [batch_size, src_len, d_model], attn: [batch_size, n_heads, src_len, src_len]
         enc_outputs, attn = self.enc_self_attn(enc_inputs, enc_inputs, enc_inputs, enc_self_attn_mask) # enc_inputs to same Q,K,V
+        enc_outputs = self.dropout1(enc_outputs)
         enc_outputs = self.pos_ffn(enc_outputs) # enc_outputs: [batch_size, src_len, d_model]
+        enc_outputs = self.dropout2(enc_outputs)
         return enc_outputs, attn
 ```
 
