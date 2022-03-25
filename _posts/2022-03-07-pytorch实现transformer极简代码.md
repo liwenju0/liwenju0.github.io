@@ -18,9 +18,9 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.utils.data as Data
 
-# S: Symbol that shows starting of decoding input
-# E: Symbol that shows starting of decoding output
-# P: Symbol that will fill in blank sequence if current batch data size is short than time steps
+# S: 解码输入的起始符
+# E: 解码输出的结束符
+# P: 填充符
 sentences = [
         # enc_input           dec_input         dec_output
         ['ich mochte ein bier P', 'S i want a beer .', 'i want a beer . E'],
