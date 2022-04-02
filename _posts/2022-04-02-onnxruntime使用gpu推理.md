@@ -18,6 +18,7 @@ published: true
 pip uninstall onnxruntime
 pip install onnxruntime-gpu==1.9
 ```
+<!--more-->
 
 # 2、 确认一下是否可以使用gpu
 注意：
