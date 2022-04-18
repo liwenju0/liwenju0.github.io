@@ -11,6 +11,7 @@ loss公式：
 
 ![2022-04-18-苏建林多标签softmax分类loss源码解析-20220418141355](https://cdn.jsdelivr.net/gh/liwenju0/blog_pictures@main/pics/2022-04-18-苏建林多标签softmax分类loss源码解析-20220418141355.png)
 
+<!--more-->
 
 源码和解析：
 ```python
