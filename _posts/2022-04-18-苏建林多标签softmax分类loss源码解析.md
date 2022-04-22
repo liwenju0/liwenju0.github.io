@@ -24,7 +24,7 @@ def multilabel_categorical_crossentropy(y_true, y_pred):
          阶段则输出y_pred大于0的类。如有疑问，请仔细阅读并理解
          本文。
     """
-    # 将正标签乘1，负标签乘-1
+    # 将正标签乘-1，负标签乘1
     y_pred = (1 - 2 * y_true) * y_pred
     # 将正标签的预测值设为无穷小
     y_pred_neg = y_pred - y_true * 1e12
