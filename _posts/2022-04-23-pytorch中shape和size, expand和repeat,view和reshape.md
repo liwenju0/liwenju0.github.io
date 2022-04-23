@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "pytorch中shape和size, expand和repeat,view和reshape.md"
+title:  "pytorch中shape和size, expand和repeat,view和reshape,permute和transpose.md"
 date:   2022-04-23 09:20:08 +0800
 category: "AI"
 published: true
@@ -32,3 +32,7 @@ view返回的tensor和原始tensor共享底层数据。
 
 reshape在可能的情况下，返回的tensor也和原始tensor共享底层数据，当不可能时，会进行复制。
 
+# permute和transpose
+permute可以改变tensor各个维度的顺序。
+
+transpose是2D的tensor情况下特殊的permute，因为此时只有一种permute方式。
