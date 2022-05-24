@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "苏建林多标签softmax分类loss源码解析"
+title:  "苏剑林多标签softmax分类loss源码解析"
 date:   2022-04-18 09:20:08 +0800
 category: "AI"
 published: true
@@ -9,7 +9,7 @@ published: true
 
 loss公式：
 
-![2022-04-18-苏建林多标签softmax分类loss源码解析-20220418141355](https://cdn.jsdelivr.net/gh/liwenju0/blog_pictures@main/pics/2022-04-18-苏建林多标签softmax分类loss源码解析-20220418141355.png)
+![2022-04-18-苏剑林多标签softmax分类loss源码解析-20220418141355](https://cdn.jsdelivr.net/gh/liwenju0/blog_pictures@main/pics/2022-04-18-苏剑林多标签softmax分类loss源码解析-20220418141355.png)
 
 <!--more-->
 

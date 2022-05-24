@@ -7,7 +7,7 @@ published: true
 ---
 
 ### 1、位置编码相关
-苏建林两篇文章：
+苏剑林两篇文章：
 [层次分解位置编码，让BERT可以处理超长文本](https://kexue.fm/archives/7947)
 
 [让研究人员绞尽脑汁的Transformer位置编码](https://kexue.fm/archives/8130)
