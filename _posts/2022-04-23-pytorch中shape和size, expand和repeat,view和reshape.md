@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "pytorch中shape和size, expand和repeat,view和reshape,permute和transpose.md"
+title:  "pytorch中shape和size, expand和repeat,view和reshape,permute和transpose分析"
 date:   2022-04-23 09:20:08 +0800
 category: "AI"
 published: true
 ---
 
-这三对相似又不完全一样的api的简要解析。
+这四对相似又不完全一样的api的简要解析。
 
 
 <!--more-->
