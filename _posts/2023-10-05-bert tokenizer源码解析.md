@@ -8,7 +8,7 @@ published: true
 做序列标注时，label和token之间的对应关系至关重要。但是大多数tokenizer都会对原始的字符序列做一定的修改，这对保持token和label之间的对应关系造成了一定的影响。因此，有必要对tokenizer的细节行为有一个清楚的认识。本文以bert tokenzier为例说明里面的细节。
 <!--more-->
 
-# tokenize框架
+# 一、tokenize框架
 bert的tokenizer分为两步，首先是BasicTokenizer，然后是WordPieceTokenizer。从FullTokenizer的源码可以看出来：
 
 ```python
@@ -38,10 +38,10 @@ class FullTokenizer(object):
 ```
 下面分别研究BasicTokenizer和WordPieceTokenizer的源码。
 
-# BasicTokenizer
+# 二、BasicTokenizer
 看看BasicTokenizer，它首先做了文本的标准化和清洗，确保后面的处理保持一致，不出错。
 
-## 文本的标准化和清洗-引起文本变化的第一处
+## 1、文本的标准化和清洗-引起文本变化的第一处
 分别对应convert_to_unicode和_clean_text两个函数。
 下面看看convert_to_unicode函数
 ```python
@@ -118,7 +118,7 @@ def _is_whitespace(char):
 
 由此可以看到，clean_text是可能引起字符串长度的变化的。
 
-## 中文的tokenize
+## 2、中文的tokenize
 为了支持中文字符，完成文本标准化和清洗后，紧接着就是调用函数_tokenize_chinese_chars。
 我们看看源码：
 ```python
@@ -159,7 +159,7 @@ def _is_whitespace(char):
 ```
 逻辑相对清晰，就是在一个中文字符前后添加空格，这样后续就不用考虑中文英文了，因为英文本身就是空格分隔的。
 
-## 空格tokenize
+## 3、空格tokenize
 紧接着，就是用空格分隔出基本都token。
 ```python
 def whitespace_tokenize(text):
@@ -174,7 +174,7 @@ def whitespace_tokenize(text):
 这里其实解决了之前的一个疑问，中文tokenzie时，在字符前后都添加了空格，势必会造成两个汉字之间有两个空格。这里就能看出来，这没什么影响。
 至此，就得到了一个初始的token序列了。
 
-# 标准化、标点分割--引起文本变化的第二处
+## 4、标准化、标点分割--引起文本变化的第二处
 得到初始的token后，紧接着对token做了两步处理，首先是去掉字符上下的声调小字符。如Ç下面的那个小尾巴。方法就是将该字符用分解形式表示。
 先看代码：
 ```python
@@ -355,7 +355,7 @@ class BasicTokenizer(object):
     return "".join(output)
 ```
 
-# WordPieceTokenzier
+# 三、WordPieceTokenzier
 这部分完全是为了英文单词的处理。中文其实不需要的。
 核心就是将一个单词分解为sub word，这样做的目的可以有效缓解OOV问题。
 
