@@ -6,6 +6,7 @@ category: "AI"
 published: true
 ---
 上一篇文章中，分析了bert的tokenizer的细节，本篇继续分析gpt2的tokenizer的细节。
+bpe的基本原理可以参考这篇文章：https://huggingface.co/course/chapter6/5?fw=pt
 <!--more-->
 该tokenizer整体调用入口是encode方法。
 
