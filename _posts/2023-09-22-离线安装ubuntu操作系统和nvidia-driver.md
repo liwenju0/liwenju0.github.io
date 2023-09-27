@@ -9,10 +9,10 @@ published: true
  记录一下安装过程中遇到的问题。
 
 <!--more-->
-## 安装ubuntu的问题
+## 一、安装ubuntu的问题
 安装的是 20.04 版本的 ubuntu 系统。机子上本来安装有 windows 系统，这次安装 ubuntu 是把机器装成双系统。
 
-### 系统无法启动，黑屏
+### 1.系统无法启动，黑屏
 安装正常安装下来，安装是成功了，但是系统无法启动。症状就是输入用户名密码后黑屏，不再有反映，连光标闪烁都没有。
 
 后来找到这个教程：
@@ -27,7 +27,7 @@ https://zhuanlan.zhihu.com/p/617640635
 然后按照上面教程，依次建立几个分区，正确设置挂载目录。
 这次安装后，系统就可以启动了。
 
-### 离线安装 gcc 和 make
+### 2.离线安装 gcc 和 make
 
 之所以要安装这个，是因为安装 nvidia driver 需要有 gcc。
 所幸，在安装光盘的 Pool 目录下，下面涉及到的 deb 包大都可以找到。
@@ -69,7 +69,7 @@ https://blog.csdn.net/weixin_42432439/article/details/108777302
 安装 make 比较简单，就是一个 deb 包，在 Pool 中搜索到后直接安装即可。
 
 
-## 安装 nvidia driver 的问题
+## 二、安装 nvidia driver 的问题
 在网上找到这个教程：https://blog.csdn.net/ChaoFeiLi/article/details/110945692
 
 参考下来，有一点不同，就是 lightdm 我的系统上就没有。所以步骤有点不一样。我把使用到的步骤罗列如下：
