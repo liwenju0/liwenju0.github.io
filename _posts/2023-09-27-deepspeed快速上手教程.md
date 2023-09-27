@@ -6,7 +6,7 @@ category: "AI"
 published: true
 ---
 
- 记录一下快速使用deepspeed的基本操作。
+记录一下快速使用deepspeed的基本操作。
 
 <!--more-->
 
