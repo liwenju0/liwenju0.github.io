@@ -1,4 +1,4 @@
 ---
 layout: category
-category: 前后端
+category: 前后端技术
 ---
