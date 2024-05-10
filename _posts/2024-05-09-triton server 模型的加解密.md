@@ -63,15 +63,25 @@ libtritonrepoagent_checksum.so
 ## 修改成加解密
 
 找遍文档，在tritonrepoagent.h中发现了一段跟加解密相关的说明。
+
 /// Any modification to the model's repository must be made when 'action_type'
+
 /// is TRITONREPOAGENT_ACTION_LOAD.
+
 /// To modify the model's repository the agent must either acquire a mutable
+
 /// location via TRITONREPOAGENT_ModelRepositoryLocationAcquire
+
 /// or its own managed location, report the location to Triton via
+
 /// TRITONREPOAGENT_ModelRepositoryUpdate, and then return
+
 /// success (nullptr). If the agent does not need to make any changes
+
 /// to the model repository it should not call
+
 /// TRITONREPOAGENT_ModelRepositoryUpdate and then return success.
+
 /// To indicate that a model load should fail return a non-success status.
 
 意思就是通过TRITONREPOAGENT_ModelRepositoryLocationAcquire获得一个临时目录，
@@ -80,18 +90,29 @@ libtritonrepoagent_checksum.so
 最后返回nullptr表示成功。
 
 然后查看TRITONREPOAGENT_ModelRepositoryLocationAcquire的说明。
+
 /// Acquire a location where the agent can produce a new version of
+
 /// the model repository files. This is a convenience method to create
+
 /// a temporary directory for the agent. The agent is responsible for
+
 /// calling TRITONREPOAGENT_ModelRepositoryLocationDelete in
+
 /// TRITONREPOAGENT_ModelFinalize to delete the location. Initially the
+
 /// acquired location is empty. The 'location' communicated depends on
+
 /// the requested 'artifact_type'.
 ///
 ///   TRITONREPOAGENT_ARTIFACT_FILESYSTEM: The location is a directory
+
 ///     on the local filesystem. 'location' returns the full path to
+
 ///     an empty directory that the agent should populate with the
+
 ///     model's artifacts. The returned location string is owned by
+
 ///     Triton, not the agent, and so should not be modified or freed.
 
 核心意思， location二级指针用来接收Triton返回的新目录，这个目录属于Triton，只能往里面放新的模型。
@@ -134,6 +155,64 @@ TRITONREPOAGENT_ModelAction(
 ```
 核心逻辑在copyDirectoryAndDecrypt方法中，它的主要作用就是将现在model_repo中的文件，复制到申请到的临时目录中。
 如果文件是onnx的模型文件，执行解密后再存在临时目录里。
+
+解密函数的内容：
+```c++
+TRITONSERVER_Error*
+decrypt(const std::string& inputPath, const std::string& outputPath)
+{
+  namespace fs = std::filesystem;
+  // 检查输入文件是否存在
+  if (!fs::exists(inputPath)) {
+    std::cerr << "Error: 输入文件 '" << inputPath << "' 不存在!" << std::endl;
+    return TRITONSERVER_ErrorNew(
+        TRITONSERVER_ERROR_NOT_FOUND, "Error: 输入文件  不存在!");
+  }
+
+  // 检查输出文件是否存在，如果存在则删除
+  if (fs::exists(outputPath)) {
+    std::cerr << "临时文件存在，先删除：" << outputPath << std::endl;
+
+    fs::remove(outputPath);
+  }
+
+  fs::path output_dir = fs::path(outputPath).parent_path();  // 获取父目录路径
+
+  // 检查目录是否存在，如果不存在则创建
+  if (!fs::exists(output_dir)) {
+    if (!fs::create_directories(output_dir)) {
+      std::cerr << "无法创建目录：" << output_dir << std::endl;
+    }
+    std::cout << "已创建目录：" << output_dir << std::endl;
+  }
+
+  // 以二进制方式打开输入和输出文件
+  std::ifstream inputFile(inputPath, std::ios::binary);
+  std::ofstream outputFile(outputPath, std::ios::binary);
+
+  // 检查文件流是否成功打开
+  if (!inputFile.is_open() || !outputFile.is_open()) {
+    std::cerr << "Error: 文件打开失败!inputPath: " << inputFile.is_open()
+              << inputPath << "outputPath: " << outputFile.is_open()
+              << outputPath << std::endl;
+    return TRITONSERVER_ErrorNew(
+        TRITONSERVER_ERROR_INTERNAL, "Error: 文件打开失败!");
+  }
+
+  // 将输入文件从第二个字节开始的内容写入到输出文件
+  inputFile.seekg(1);  // 跳过第一个字节
+  outputFile << inputFile.rdbuf();
+
+  // 关闭文件流
+  inputFile.close();
+  outputFile.close();
+
+  // 输出成功信息
+  std::cout << "解密成功，输出文件已生成: " << outputPath << std::endl;
+
+  return nullptr;
+}
+```
 
 比较顺利，一次成功了！
 ## 删除解密的模型
