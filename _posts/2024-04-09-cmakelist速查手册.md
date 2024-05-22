@@ -306,4 +306,5 @@ https://cmake.org/cmake/help/v3.0/command/set.html
 Latex 模板由 John Smith 创建，2015 http://johnsmith.com/
 根据 MIT 许可证发布。
 
-
+# 其他优秀参考资料
+https://zhuanlan.zhihu.com/p/534439206
