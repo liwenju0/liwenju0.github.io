@@ -4483,8 +4483,9 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 }
 
 .nav {
-    padding-left: 0;
-    margin-bottom: 0;
+    padding-right: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
     font-size: 22px;
     color: yellowgreen;
     list-style: none
