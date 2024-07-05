@@ -64,6 +64,14 @@ img {
 	margin-right: 20px; /* Adjust this value as needed for desired spacing */
 	margin-top: 10px; /* Adjust this value as needed for desired spacing */
   }
+
+  .nav_container {
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+	margin-bottom: 10px;
+	background-color: rgb(101, 96, 91);
+}
   
  
 
