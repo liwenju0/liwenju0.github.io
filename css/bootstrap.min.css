@@ -4485,6 +4485,8 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 .nav {
     padding-left: 0;
     margin-bottom: 0;
+    font-size: 22px;
+    color: yellowgreen;
     list-style: none
 }
 
@@ -4521,7 +4523,7 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 .nav .open>a:hover,
 .nav .open>a:focus {
     background-color: #eee;
-    border-color: #cf520f
+    border-color: #428bca
 }
 
 .nav .nav-divider {
