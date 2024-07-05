@@ -54,5 +54,14 @@ img {
   .anim_content p {
 	font-size: 1.5em;
   }
+
+  .anim_container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-right: 20px; /* Adjust this value as needed for desired spacing */
+	margin-top: 10px; /* Adjust this value as needed for desired spacing */
+  }
+  
  
 
