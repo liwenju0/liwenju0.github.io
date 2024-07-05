@@ -25,5 +25,34 @@ img {
 	max-height: 100%;
  }
 
+
+ /* 动画背景样式 */
+.animated-background {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	background: url('/assets/images/background.jpg') center;
+	background-size: cover;
+  }
+  
+  
+  /* 内容样式 */
+  .anim_content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	text-align: center;
+  }
+  
+  .anim_content h1 {
+	font-size: 3em;
+  }
+  
+  .anim_content p {
+	font-size: 1.5em;
+  }
  
 
