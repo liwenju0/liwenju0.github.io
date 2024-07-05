@@ -67,8 +67,7 @@ img {
 
   .nav_container {
     padding-right: 10px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 5px;
 	margin-bottom: 10px;
 	background-color: rgb(101, 96, 91);
 }
