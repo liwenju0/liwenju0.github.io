@@ -31,6 +31,7 @@
     <div class="row">
       <div class="col-md-8">
         <h2>搜索结果: "{{ site.search.query }}"</h2>
+        {% if site.search.results %}
         <ul>
           {% for result in site.search.results %}
           <li>
@@ -39,6 +40,9 @@
           </li>
           {% endfor %}
         </ul>
+        {% else %}
+        <p>没有找到相关结果。</p>
+        {% endif %}
       </div>
       <div class="col-md-4">
         <div class="well">
