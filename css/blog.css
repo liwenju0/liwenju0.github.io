@@ -61,8 +61,8 @@ img {
 	top: 0;
 	right: 0;
 	margin-right: 0px; /* Adjust this value as needed for desired spacing */
-	margin-top: 10px; /* Adjust this value as needed for desired spacing */
-	background-color: rgb(192, 192, 123);
+	margin-top: 0px; /* Adjust this value as needed for desired spacing */
+	background-color: rgb(87, 105, 215);
 	z-index: 1000; /* 确保导航栏的 z-index 值比栏目分类的高 */
   	position: relative; /* 确保 z-index 属性生效 */
   }
