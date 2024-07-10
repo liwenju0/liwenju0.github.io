@@ -1743,7 +1743,9 @@ pre code {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
-    margin-left: auto
+    margin-left: auto;
+    z-index: 500; /* 确保导航栏的 z-index 值比栏目分类的高 */
+  	position: relative; /* 确保 z-index 属性生效 */
 }
 
 @media (min-width:768px) {
