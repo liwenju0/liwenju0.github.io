@@ -4523,7 +4523,7 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 .nav .open>a,
 .nav .open>a:hover,
 .nav .open>a:focus {
-    background-color: #a6cd33;
+    background-color: #eee;
     border-color: #428bca
 }
 
@@ -5131,7 +5131,7 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #777
+    color: #a0ba53
 }
 
 .navbar-default .navbar-nav>li>a:hover,
