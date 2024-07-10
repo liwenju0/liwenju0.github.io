@@ -35,7 +35,7 @@
         <ul>
           {% for result in site.search.results %}
           <li>
-            <a href="{{ result.url }}">{{ result.title }}</a>
+            <a href="{{ site.baseurl }}{{ result.url }}">{{ result.title }}</a>
             <p>{{ result.excerpt }}</p>
           </li>
           {% endfor %}
