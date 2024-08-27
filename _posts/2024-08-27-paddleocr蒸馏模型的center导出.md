@@ -3,7 +3,7 @@ layout: post
 title:  "paddleocr蒸馏模型的center导出"
 date:   2024-08-27 09:20:08 +0800
 category: "AI"
-published: false
+published: true
 ---
 
 最近使用paddleocr框架训练一个识别模型，方式是蒸馏svtrv2。训练完成后，想进一步实验一下添加center loss，对识别形近字的提升效果。
