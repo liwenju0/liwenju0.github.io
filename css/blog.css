@@ -67,5 +67,21 @@ img {
   	position: relative; /* 确保 z-index 属性生效 */
   }
 
- 
+  .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .nav li {
+    float: none;
+    display: inline-block;
+  }
+
+  .nav li a {
+    padding: 15px 20px;
+    text-align: center;
+  }
+
 
