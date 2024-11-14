@@ -9,7 +9,9 @@ published: true
 
 loss公式：
 
-![2022-04-18-苏剑林多标签softmax分类loss源码解析-20220418141355](https://cdn.jsdelivr.net/gh/liwenju0/blog_pictures@main/pics/2022-04-18-苏剑林多标签softmax分类loss源码解析-20220418141355.png)
+$$
+log\left(1+\sum_{i\in\Omega_{neg}} e^{s_i}\right) + log\left(1+\sum_{j\in\Omega_{pos}} e^{-s_j}\right)
+$$
 
 <!--more-->
 
