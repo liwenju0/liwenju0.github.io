@@ -5,28 +5,19 @@
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
 <script>
-// 生成较短的 id
-function generateId(path) {
-    // 使用 MD5 对路径进行哈希,生成固定长度的 id
-    var hash = 0;
-    for (var i = 0; i < path.length; i++) {
-        var char = path.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash = hash & hash;
-    }
-    return hash.toString();
-}
-
 var gitalk = new Gitalk({
     clientID: '你的 client ID',
     clientSecret: '你的 client secret',
     repo: 'liwenju0.github.io',
     owner: 'liwenju0',
     admin: ['liwenju0'],
-    id: generateId(location.pathname),    // 使用哈希后的路径作为 id
-    language: 'zh-CN',
+    id: md5(location.pathname),    // 使用 md5 处理路径
+    language: 'zh-CN'
 })
 
 gitalk.render('gitalk-container')
 </script>
+
+<!-- 添加 md5 库 -->
+<script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 
