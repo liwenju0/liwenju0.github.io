@@ -70,6 +70,11 @@ img {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+    backdrop-filter: blur(5px);
+    padding: 10px 0;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
 
   .nav li {
@@ -80,6 +85,14 @@ img {
   .nav li a {
     padding: 15px 20px;
     text-align: center;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav li a:hover {
+    color: #1e88e5;
+    text-decoration: none;
   }
 
   .container {
