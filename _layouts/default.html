@@ -29,8 +29,16 @@
     <script src="/js/bootstrap.min.js"></script>
 
     <!-- 为了支持数学公式，添加下面的代码 -->
+    <style>
+      .MathJax {
+        color: blue !important;
+      }
+    </style>
     <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } });
+      MathJax.Hub.Config({ 
+        TeX: { equationNumbers: { autoNumber: "all" } },
+        messageStyle: "none"
+      });
     </script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
