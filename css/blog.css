@@ -5,8 +5,8 @@
  */
 
 body {
-    /*padding-top: 10px;  Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-  	padding: 0;
+    background-color: #333;  /* 深色背景 */
+    padding: 0;
 }
 
 footer {
@@ -58,13 +58,11 @@ img {
   }
 
   .anim_container {
-	top: 0;
-	right: 0;
-	margin-right: 0px; /* Adjust this value as needed for desired spacing */
-	margin-top: 0px; /* Adjust this value as needed for desired spacing */
 	background-color: rgb(87, 105, 215);
-	z-index: 1000; /* 确保导航栏的 z-index 值比栏目分类的高 */
-  	position: relative; /* 确保 z-index 属性生效 */
+	z-index: 1000;
+	position: relative;
+	margin: 0 auto;
+	max-width: 1000px;
   }
 
   .nav {
@@ -85,9 +83,11 @@ img {
   }
 
   .container {
-    max-width: 1000px;  /* 限制最大宽度 */
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 15px;
+    background-color: #fff;  /* 内容区域保持白色背景 */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);  /* 添加阴影效果 */
   }
 
   .col-md-9 {
