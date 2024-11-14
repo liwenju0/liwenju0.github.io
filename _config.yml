@@ -12,8 +12,8 @@ domain: liwenju0.github.com
 all_categories: [
 ["ai", "人工智能","/posts/ai.html"],
 ["basis", "计算机基础","/posts/basis.html"],
-["essay", "生活随笔","/posts/essay.html"],
 ["frontback", "前后端技术","/posts/frontback.html"],
+["essay", "生活随笔","/posts/essay.html"],
 ["about", "关于我","/about.html"]
 ]
 
