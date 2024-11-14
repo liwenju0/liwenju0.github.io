@@ -85,7 +85,7 @@ img {
   }
 
   .container {
-    max-width: 800px;  /* 限制最大宽度 */
+    max-width: 1000px;  /* 限制最大宽度 */
     margin: 0 auto;
     padding: 0 15px;
   }
