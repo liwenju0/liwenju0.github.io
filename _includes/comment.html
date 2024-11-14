@@ -1,23 +1,56 @@
-<!-- Gitalk 评论框 -->
+<!-- 评论框 -->
 <div id="gitalk-container"></div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<!-- 引入 Gitalk 相关资源 -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js-md5.min.js"></script>
 
 <script>
-var gitalk = new Gitalk({
-    clientID: 'Ov23liczd9uQix6KfYph',
-    clientSecret: 'a93c8842c31f3ba6a7ac039896486d36f3ee36c2',
-    repo: 'liwenju0.github.io',
-    owner: 'liwenju0',
-    admin: ['liwenju0'],
-    id: md5(location.pathname),    // 使用 md5 处理路径
-    language: 'zh-CN'
-})
+document.addEventListener('DOMContentLoaded', function() {
+    const gitalk = new Gitalk({
+        clientID: 'Ov23liczd9uQix6KfYph',           // 替换为你的 GitHub OAuth App client ID
+        clientSecret: 'a93c8842c31f3ba6a7ac039896486d36f3ee36c2',   // 替换为你的 GitHub OAuth App client secret
+        repo: 'liwenju0.github.io',          // 替换为你的 GitHub 仓库名
+        owner: 'liwenju0',                   // 替换为你的 GitHub 用户名
+        admin: ['liwenju0'],                 // 替换为你的 GitHub 用户名
+        id: md5(location.pathname),          // 页面的唯一标识
+        language: 'zh-CN',                   // 语言设置
+        distractionFreeMode: false,          // 无干扰模式
+        title: '{{ page.title }}',           // 文章标题
+        labels: ['Gitalk', 'Comment'],       // Issue 的标签
+        perPage: 15,                         // 每页评论数
+        createIssueManually: false           // 如果当前页面没有相应的 issue，则自动创建
+    });
 
-gitalk.render('gitalk-container')
+    gitalk.render('gitalk-container');
+});
 </script>
 
-<!-- 添加 md5 库 -->
-<script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<style>
+/* 自定义样式 */
+#gitalk-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.gt-container .gt-btn {
+    background-color: #007bff;
+}
+
+.gt-container .gt-btn:hover {
+    background-color: #0056b3;
+}
+
+.gt-container .gt-link {
+    color: #007bff;
+}
+
+.gt-container .gt-link:hover {
+    color: #0056b3;
+}
+</style>
 
