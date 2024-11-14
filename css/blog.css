@@ -84,4 +84,14 @@ img {
     text-align: center;
   }
 
+  .container {
+    max-width: 1200px;  /* 限制最大宽度 */
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .col-md-9 {
+    padding-right: 30px;  /* 增加右侧内边距 */
+  }
+
 
