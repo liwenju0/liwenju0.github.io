@@ -32,6 +32,10 @@
     <style>
       .MathJax {
         color: blue !important;
+        font-size: 115% !important;
+      }
+      mjx-container {
+        font-size: 115% !important;
       }
     </style>
     <script>
@@ -41,16 +45,21 @@
         processEscapes: true
       },
       svg: {
-        fontCache: 'global'
+        scale: 1.2,
+        minScale: 1.2
+      },
+      chtml: {
+        scale: 1.2,
+        minScale: 1.2,
+        matchFontHeight: true
       },
       options: {
-        enableMenu: true,
-        availableFonts: ["TeX"]
+        enableMenu: true
       }
     };
     </script>
     <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
     </script>
   </head>
   
