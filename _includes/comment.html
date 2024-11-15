@@ -8,17 +8,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 处理标题，将中文转为拼音或其他字符
     function generateId(title) {
-        // 移除特殊字符，只保留字母、数字和中文
+        // 1. 先移除所有特殊字符,只保留字母数字和中文
         let cleanTitle = title.replace(/[^\w\u4e00-\u9fff]/g, '');
-        // 限制长度
-        cleanTitle = cleanTitle.substring(0, 50);
-        // 如果是中文，转为 ASCII 码
-        return cleanTitle.split('').map(char => {
+        
+        // 2. 对中文进行处理
+        let processedTitle = cleanTitle.split('').map(char => {
             if (/[\u4e00-\u9fff]/.test(char)) {
-                return char.charCodeAt(0);
+                // 使用一个较短的hash值替代ASCII码
+                return char.charCodeAt(0).toString(16).substring(0,4);
             }
             return char;
         }).join('');
+        
+        // 3. 限制长度
+        return processedTitle.substring(0, 50);
     }
     const gitalk = new Gitalk({
         clientID: 'Ov23liHCGU8dIpNpNcEG',           // 替换为你的 GitHub OAuth App client ID
