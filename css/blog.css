@@ -142,7 +142,7 @@ img {
 .highlight {
   position: relative;
   overflow-x: auto;
-  background: #f8f8f8;
+  background: #f0f0f0; /* 改为更深的灰色 */
   border-radius: 4px;
   margin: 1em 0;
 }
