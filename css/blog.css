@@ -138,4 +138,38 @@ img {
   }
 }
 
+/* 代码块样式 */
+.highlight pre,
+pre.highlight,
+.highlight code,
+div.highlight {
+  overflow-x: auto;
+  white-space: pre;
+  word-wrap: normal;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 1em;
+}
+
+.highlight code {
+  display: block;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  line-height: 1.5;
+}
+
+/* 确保水平滚动条样式 */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
 
