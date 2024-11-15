@@ -4,17 +4,29 @@
 <!-- 引入 Gitalk 相关资源 -->
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js-md5.min.js"></script>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // 处理标题，将中文转为拼音或其他字符
+    function generateId(title) {
+        // 移除特殊字符，只保留字母、数字和中文
+        let cleanTitle = title.replace(/[^\w\u4e00-\u9fff]/g, '');
+        // 限制长度
+        cleanTitle = cleanTitle.substring(0, 50);
+        // 如果是中文，转为 ASCII 码
+        return cleanTitle.split('').map(char => {
+            if (/[\u4e00-\u9fff]/.test(char)) {
+                return char.charCodeAt(0);
+            }
+            return char;
+        }).join('');
+    }
     const gitalk = new Gitalk({
         clientID: 'Ov23liHCGU8dIpNpNcEG',           // 替换为你的 GitHub OAuth App client ID
         clientSecret: '11185283aba976c92f5ff827fff3b4df09c588f6',   // 替换为你的 GitHub OAuth App client secret
         repo: 'liwenju0.github.io',          // 替换为你的 GitHub 仓库名
         owner: 'liwenju0',                   // 替换为你的 GitHub 用户名
         admin: ['liwenju0'],                 // 替换为你的 GitHub 用户名
-        id: md5(location.pathname),          // 页面的唯一标识
+        id: generateId('{{ page.title }}'),          // 页面的唯一标识
         language: 'zh-CN',                   // 语言设置
         distractionFreeMode: false,          // 无干扰模式
         title: '{{ page.title }}',           // 文章标题
