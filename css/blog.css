@@ -138,38 +138,54 @@ img {
   }
 }
 
-/* 代码块样式 */
-.highlight pre,
-pre.highlight,
-.highlight code,
-div.highlight {
+/* 代码块容器样式 */
+.highlight {
+  position: relative;
   overflow-x: auto;
-  white-space: pre;
-  word-wrap: normal;
-  padding: 10px;
+  background: #f8f8f8;
   border-radius: 4px;
-  margin-bottom: 1em;
+  margin: 1em 0;
 }
 
+/* 确保代码不换行 */
+.highlight pre,
 .highlight code {
-  display: block;
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  line-height: 1.5;
+  white-space: pre !important;
+  word-wrap: normal !important;
+  word-break: normal !important;
+  overflow-x: auto !important;
+  width: max-content;
+  min-width: 100%;
 }
 
-/* 确保水平滚动条样式 */
-::-webkit-scrollbar {
+/* 美化滚动条 */
+.highlight::-webkit-scrollbar {
   height: 8px;
-  width: 8px;
 }
 
-::-webkit-scrollbar-thumb {
+.highlight::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-track {
+.highlight::-webkit-scrollbar-track {
   background: #f1f1f1;
+}
+
+/* 确保代码内容不会被截断 */
+.highlight table {
+  margin: 0;
+  width: max-content;
+  min-width: 100%;
+}
+
+.highlight td {
+  padding: 0;
+}
+
+.highlight .lineno {
+  padding: 0 10px;
+  border-right: 1px solid #ccc;
 }
 
 
