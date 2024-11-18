@@ -190,8 +190,7 @@ img {
 
 .baidu-tongji {
   background: #fff;
-  padding: 10px;
-  box-shadow: 0 0px 0px rgba(0,0,0,0.1);
+  padding: 0px;
   margin: 10px auto;
   max-width: 300px;
 }
