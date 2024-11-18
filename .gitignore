@@ -1,2 +1,4 @@
 .history/
 .aider*
+*.ipynb
+*.ipynb_checkpoints
