@@ -101,8 +101,8 @@ img {
 
   .container {
     max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px 15px;
+    margin-top: 10px;
+    padding: 5px 15px;
     background-color: #fff;  /* 内容区域保持白色背景 */
     box-shadow: 0 0 10px rgba(0,0,0,0.1);  /* 添加阴影效果 */
     border-radius: 15px;  /* 增加圆角半径 */
@@ -205,6 +205,5 @@ img {
     border-radius: 15px;  /* 增加圆角半径 */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin-bottom: 20px;
-    margin-top: 30px;  /* 增加这一行 */
 }
 
