@@ -77,8 +77,7 @@ img {
     padding: 10px 0;
     margin-bottom: 1em;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1),
-                inset 0 -2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
 
   .nav li {
@@ -106,6 +105,7 @@ img {
     padding: 0 15px;
     background-color: #fff;  /* 内容区域保持白色背景 */
     box-shadow: 0 0 10px rgba(0,0,0,0.1);  /* 添加阴影效果 */
+    border-radius: 15px;  /* 增加圆角半径 */
   }
 
   .col-md-9 {
@@ -140,11 +140,10 @@ img {
 
 /* 代码块容器样式 */
 .highlight {
-  position: relative;
-  overflow-x: auto;
-  background: #f0f0f0; /* 改为更深的灰色 */
-  border-radius: 4px;
-  margin: 1em 0;
+    border-radius: 10px;  /* 增加圆角半径 */
+    overflow-x: auto;
+    background: #f0f0f0;
+    margin: 1em 0;
 }
 
 /* 确保代码不换行 */
@@ -198,5 +197,13 @@ img {
 .baidu-tongji span {
   margin: 0 5px;
   font-size: 14px;
+}
+
+.well {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 15px;  /* 增加圆角半径 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
