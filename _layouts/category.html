@@ -60,12 +60,12 @@
           {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
           {% if year != y %}
           {% assign year = y %}
-          <h2 style="background-color: #f3eddc; padding: 10px; margin: 0 0 10px 0; border-radius: 5px;">{{ post.date | date: '%Y' }}</h2>
+          <h3 class="year-title">{{ post.date | date: '%Y' }}</h3>
           {% endif %}
           <li>
-            <h4 style="display: flex; align-items: center; gap: 8px; font-size: 1.1em;">
-              <span style="flex-shrink: 0">{{ post.date | date:"%Y-%m-%d" }}</span>&raquo;
-              <a href="{{ post.url }}" title="{{ post.title }}" style="overflow-wrap: break-word;">{{ post.title }}</a>
+            <h4 class="post-list-item">
+              <span class="date">{{ post.date | date:"%Y-%m-%d" }}</span>&raquo;
+              <a class="title" href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
             </h4>
           </li>
           {% endfor %}

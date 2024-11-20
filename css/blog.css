@@ -254,3 +254,30 @@ img {
   margin-top: 20px;  /* 增加上边距 */
   margin-bottom: 30px; /* 增加下边距，使其与下一篇文章有更大间距 */
 }
+
+
+/* 年份标题样式 */
+.year-title {
+  background-color: #f3eddc;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  border-radius: 5px;
+  color: #ff6600;
+  
+}
+
+/* 文章列表项样式 */
+.post-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1em;
+}
+
+.post-list-item .date {
+  flex-shrink: 0;
+}
+
+.post-list-item .title {
+  overflow-wrap: break-word;
+}
