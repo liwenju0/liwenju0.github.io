@@ -228,7 +228,7 @@ img {
   padding: 10px;  /* 添加内边距 */
   margin: 0px 0;  /* 添加外边距 */
   background-color: #f3eddc;  /* 设置背景色 */
-  border-radius: 2px;  /* 可选：添加圆角 */
+  border-radius: 5px;  /* 可选：添加圆角 */
   display: block;  /* 确保元素占据整行 */
 }
 
