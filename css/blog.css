@@ -209,17 +209,17 @@ img {
 
 /* 栏目分类背景 */
 .well.categories {
-  background-color: #9eb79e;
+  background-color: #e6effe;
 }
 
 /* 最新文章背景 */
 .well.recent-posts {
-  background-color: #c9d9ad;
+  background-color: #f4f4e7;
 }
 
 /* 相关链接背景 */
 .well.links {
-  background-color: #d5b8b8;
+  background-color: #e2f9e3;
 }
 
 /* 首页文章标题样式 */
