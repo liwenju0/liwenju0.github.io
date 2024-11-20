@@ -226,7 +226,7 @@ img {
 .post-title {
   font-size: 1.1em;
   padding: 10px;  /* 添加内边距 */
-  margin: 0 0 20px 0;  /* 增加底部外边距 */
+  margin: 0 0 10px 0;  /* 增加底部外边距 */
   background-color: #f3eddc;  /* 设置背景色 */
   border-radius: 5px;  /* 可选：添加圆角 */
   display: block;  /* 确保元素占据整行 */
@@ -246,7 +246,7 @@ img {
 
 
 .post-excerpt {
-  margin-bottom: 30px;  /* 增加底部间距 */
+  margin-bottom: 15px;  /* 增加底部间距 */
 }
 
 .read-more {
