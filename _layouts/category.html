@@ -63,7 +63,7 @@
           <h2 style="background-color: #f3eddc; padding: 10px; margin: 0 0 10px 0; border-radius: 5px;">{{ post.date | date: '%Y' }}</h2>
           {% endif %}
           <li>
-            <h4 style="display: flex; align-items: center; gap: 8px;">
+            <h4 style="display: flex; align-items: center; gap: 8px; font-size: 0.9em;">
               <span style="flex-shrink: 0">{{ post.date | date:"%Y-%m-%d" }}</span>&raquo;
               <a href="{{ post.url }}" title="{{ post.title }}" style="overflow-wrap: break-word;">{{ post.title }}</a>
             </h4>
