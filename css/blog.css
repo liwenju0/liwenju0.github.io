@@ -207,6 +207,21 @@ img {
     margin-bottom: 20px;
 }
 
+/* 栏目分类背景 */
+.well.categories {
+  background-color: #9eb79e;
+}
+
+/* 最新文章背景 */
+.well.recent-posts {
+  background-color: #c9d9ad;
+}
+
+/* 相关链接背景 */
+.well.links {
+  background-color: #d5b8b8;
+}
+
 /* 首页文章标题样式 */
 .post-title {
   font-size: 1.5em;  /* 原来是2em,调小为1.5em */
