@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "pytorch中shape和size, expand和repeat,view和reshape,permute和transpose分析"
+title:  "torch中易混的tensor变形操作"
 date:   2022-04-23 09:20:08 +0800
 category: "AI"
 published: true
