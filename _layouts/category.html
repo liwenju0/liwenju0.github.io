@@ -63,8 +63,9 @@
           <h2>{{ post.date | date: '%Y' }}</h2>
           {% endif %}
           <li>
-            <h4><span>{{ post.date | date:"%Y-%m-%d" }}</span>&raquo;
-              <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+            <h4 style="display: flex; align-items: center; gap: 8px;">
+              <span style="flex-shrink: 0">{{ post.date | date:"%Y-%m-%d" }}</span>&raquo;
+              <a href="{{ post.url }}" title="{{ post.title }}" style="overflow-wrap: break-word;">{{ post.title }}</a>
             </h4>
           </li>
           {% endfor %}
