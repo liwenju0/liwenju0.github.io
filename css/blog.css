@@ -224,14 +224,27 @@ img {
 
 /* 首页文章标题样式 */
 .post-title {
-  font-size: 1.1em;  /* 原来是2em,调小为1.5em */
+  font-size: 1.1em;
+  padding: 10px;  /* 添加内边距 */
+  margin: 15px 0;  /* 添加外边距 */
+  background-color: #f3eddc;  /* 设置背景色 */
+  border-radius: 5px;  /* 可选：添加圆角 */
+  display: block;  /* 确保元素占据整行 */
+}
+
+.post-title a {
+  color: #333;  /* 链接颜色 */
+  text-decoration: none;  /* 移除下划线 */
+}
+
+.post-title .post-date {
+  float: right;
+  padding: 0 5px;
+  font-size: 0.8em;
+  color: #666;
 }
 
 /* 阅读全文链接样式 */
 .read-more {
   font-size: 0.9em;  /* 原来是1.5em,调小为1.1em */
-}
-
-.post-title.background {
-  background-color: #f3eddc;
 }
