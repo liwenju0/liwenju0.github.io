@@ -232,3 +232,6 @@ img {
   font-size: 0.9em;  /* 原来是1.5em,调小为1.1em */
 }
 
+.post-title.background {
+  background-color: #f3eddc;
+}
