@@ -244,13 +244,6 @@ img {
   color: #666;
 }
 
-.post-divider {
-  margin: 2px 0;
-  border: 0;
-  border-top: 1px solid #eee;  /* 可以修改颜色 */
-  height: 0px;  /* 控制线的粗细 */
-  
-}
 
 /* 阅读全文链接样式 */
 .read-more {
