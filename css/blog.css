@@ -248,4 +248,5 @@ img {
 /* 阅读全文链接样式 */
 .read-more {
   font-size: 0.9em;  /* 原来是1.5em,调小为1.1em */
+  margin-bottom: 10px;
 }
