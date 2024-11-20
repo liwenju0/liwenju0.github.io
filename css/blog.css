@@ -251,6 +251,6 @@ img {
 
 .read-more {
   font-size: 0.9em;
-  margin-top: 30px;  /* 增加上边距 */
-  margin-bottom: 50px; /* 增加下边距，使其与下一篇文章有更大间距 */
+  margin-top: 20px;  /* 增加上边距 */
+  margin-bottom: 30px; /* 增加下边距，使其与下一篇文章有更大间距 */
 }
