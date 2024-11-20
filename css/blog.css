@@ -141,7 +141,7 @@ img {
 /* 代码块容器样式 */
 .highlight {
     border-radius: 10px;  /* 增加圆角半径 */
-    overflow: hidden;  /* 修改这里,确保内容不会溢出 */
+    overflow-x: auto;
     background: #f0f0f0;
     margin: 1em 0;
 }
