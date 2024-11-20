@@ -224,11 +224,11 @@ img {
 
 /* 首页文章标题样式 */
 .post-title {
-  font-size: 1.5em;  /* 原来是2em,调小为1.5em */
+  font-size: 1.1em;  /* 原来是2em,调小为1.5em */
 }
 
 /* 阅读全文链接样式 */
 .read-more {
-  font-size: 1.1em;  /* 原来是1.5em,调小为1.1em */
+  font-size: 0.9em;  /* 原来是1.5em,调小为1.1em */
 }
 
