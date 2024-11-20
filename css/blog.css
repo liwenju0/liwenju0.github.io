@@ -226,7 +226,7 @@ img {
 .post-title {
   font-size: 1.1em;
   padding: 10px;  /* 添加内边距 */
-  margin: 0px 0;  /* 添加外边距 */
+  margin: 0 0 20px 0;  /* 增加底部外边距 */
   background-color: #f3eddc;  /* 设置背景色 */
   border-radius: 5px;  /* 可选：添加圆角 */
   display: block;  /* 确保元素占据整行 */
@@ -245,9 +245,12 @@ img {
 }
 
 
-/* 阅读全文链接样式 */
+.post-excerpt {
+  margin-bottom: 30px;  /* 增加底部间距 */
+}
+
 .read-more {
-  font-size: 0.9em;  /* 原来是1.5em,调小为1.1em */
-  margin-top: 20px;  /* 添加上边距 */
-  margin-bottom: 30px; /* 添加下边距 */
+  font-size: 0.9em;
+  margin-top: 30px;  /* 增加上边距 */
+  margin-bottom: 50px; /* 增加下边距，使其与下一篇文章有更大间距 */
 }

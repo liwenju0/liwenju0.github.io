@@ -14,7 +14,9 @@ title: "欢迎来到"
 	{{ post.date | date:"%Y-%m-%d" }}
   </div>
 </h2>
-{{ post.excerpt }}
+<div class="post-excerpt" style="margin-bottom: 30px;">
+  {{ post.excerpt }}
+</div>
 	<p><h3 class="read-more"><a href="{{ post.url }}">阅读全文 &raquo;</a></h3></p>
 {% endfor %}
 
