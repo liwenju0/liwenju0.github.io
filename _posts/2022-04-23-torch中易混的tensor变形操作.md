@@ -6,7 +6,7 @@ category: "AI"
 published: true
 ---
 
-这四对相似又不完全一样的api的简要解析。
+四对相似又不完全一样的api的简要解析。
 
 
 <!--more-->
