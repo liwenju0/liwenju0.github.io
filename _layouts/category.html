@@ -60,7 +60,7 @@
           {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
           {% if year != y %}
           {% assign year = y %}
-          <h2>{{ post.date | date: '%Y' }}</h2>
+          <h2 style="background-color: #f3eddc; padding: 10px; margin: 0 0 10px 0; border-radius: 5px;">{{ post.date | date: '%Y' }}</h2>
           {% endif %}
           <li>
             <h4 style="display: flex; align-items: center; gap: 8px;">
