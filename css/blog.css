@@ -112,6 +112,11 @@ img {
     padding-right: 30px;  /* 增加右侧内边距 */
   }
 
+  .col-md-8 {
+    padding-right: 30px;
+    border-right: 1px dashed #ccc; /* 添加右侧虚线边框 */
+  }
+
 @media screen and (max-width: 768px) {
   .animated-background {
     height: 50vh; /* 在移动端减小高度 */
