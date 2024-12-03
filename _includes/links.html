@@ -7,18 +7,23 @@
   .blog-links li {
     margin-bottom: 12px;
     list-style: none;
+    display: flex;
+    flex-wrap: wrap;
   }
   
   .blog-links a {
     color: #337ab7;
     text-decoration: none;
     font-weight: 500;
+    min-width: 150px;
+    flex-shrink: 0;
   }
   
   .blog-links .description {
     color: #666;
     margin-left: 8px;
     font-size: 0.9em;
+    flex: 1;
   }
 </style>
 
