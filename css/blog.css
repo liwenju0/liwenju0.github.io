@@ -326,6 +326,7 @@ img {
   padding: 3px 0;
   display: flex;  /* 添加 flex 布局 */
   align-items: flex-start;  /* 设置顶部对齐 */
+  border-bottom: 1px dashed #e2d5d5;
 }
 
 .recent-post-item:last-child {
@@ -336,6 +337,7 @@ img {
   font-size: 0.85em;
   color: #666;
   margin-right: 8px;
+  min-width: 85px;
 }
 
 .recent-post-item a {
