@@ -298,6 +298,7 @@ img {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  border-bottom: 1px dashed #968080;
 }
 
 .blog-links a {
