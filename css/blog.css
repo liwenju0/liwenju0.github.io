@@ -371,8 +371,5 @@ img {
 }
 
 .categories .list-unstyled li a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0px 8px rgba(0,0,0,0.15);
-  background-color: #f8f9fa;
-  color: #1e88e5;
+  color: #d7530b;
 }
