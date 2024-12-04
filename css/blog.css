@@ -327,7 +327,7 @@ img {
   display: flex;  
   align-items: center;  /* 修改为center以确保垂直居中对齐 */
   justify-content: space-between; /* 添加此行，使标题和日期分别靠左右对齐 */
-  border-bottom: 1px dashed #e2d5d5;
+  /* border-bottom: 1px dashed #e2d5d5; */
   line-height: 1.5;  /* 添加行高确保文本对齐 */
 }
 
