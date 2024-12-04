@@ -324,6 +324,8 @@ img {
 .recent-post-item {
   margin-bottom: 5px;
   padding: 3px 0;
+  display: flex;  /* 添加 flex 布局 */
+  align-items: flex-start;  /* 设置顶部对齐 */
 }
 
 .recent-post-item:last-child {
