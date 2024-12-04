@@ -361,7 +361,7 @@ img {
 
 .categories .list-unstyled li a {
   display: block;
-  padding: 10px 15px;
+  padding: 5px 0px 5px 0px;
   background-color: none;
   border-radius: 8px;
   color: #333;
