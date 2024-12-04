@@ -298,7 +298,6 @@ img {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  border-bottom: 1px dashed #968080;
 }
 
 .blog-links a {
@@ -323,9 +322,8 @@ img {
 }
 
 .recent-post-item {
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   padding: 3px 0;
-  border-bottom: 1px dashed #968080;
 }
 
 .recent-post-item:last-child {
