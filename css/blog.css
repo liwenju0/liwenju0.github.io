@@ -324,9 +324,10 @@ img {
 .recent-post-item {
   margin-bottom: 5px;
   padding: 3px 0;
-  display: flex;  /* 添加 flex 布局 */
-  align-items: flex-start;  /* 设置顶部对齐 */
+  display: flex;  
+  align-items: center;  /* 修改为center以确保垂直居中对齐 */
   border-bottom: 1px dashed #e2d5d5;
+  line-height: 1.5;  /* 添加行高确保文本对齐 */
 }
 
 .recent-post-item:last-child {
@@ -338,11 +339,13 @@ img {
   color: #666;
   margin-right: 8px;
   min-width: 85px;
+  line-height: inherit;  /* 继承父元素的行高 */
 }
 
 .recent-post-item a {
   color: #333;
   text-decoration: none;
+  line-height: inherit;  /* 继承父元素的行高 */
 }
 
 .recent-post-item a:hover {
