@@ -353,3 +353,26 @@ img {
 .recent-post-item a:hover {
   color: #1e88e5;
 }
+
+/* 栏目分类链接样式 */
+.categories .list-unstyled li {
+  margin-bottom: 15px;  /* 增加项目之间的间距 */
+}
+
+.categories .list-unstyled li a {
+  display: block;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.categories .list-unstyled li a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  background-color: #f8f9fa;
+  color: #1e88e5;
+}
