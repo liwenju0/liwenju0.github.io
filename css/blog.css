@@ -356,7 +356,7 @@ img {
 
 /* 栏目分类链接样式 */
 .categories .list-unstyled li {
-  margin-bottom: 15px;  /* 增加项目之间的间距 */
+  margin-bottom: 10px;  /* 增加项目之间的间距 */
 }
 
 .categories .list-unstyled li a {
