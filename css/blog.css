@@ -314,3 +314,34 @@ img {
   font-size: 0.9em;
   flex: 1;
 }
+
+.recent-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-post-item {
+  margin-bottom: 12px;
+  padding: 8px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.recent-post-item:last-child {
+  border-bottom: none;
+}
+
+.recent-post-item .post-date {
+  font-size: 0.85em;
+  color: #666;
+  margin-right: 8px;
+}
+
+.recent-post-item a {
+  color: #333;
+  text-decoration: none;
+}
+
+.recent-post-item a:hover {
+  color: #1e88e5;
+}
