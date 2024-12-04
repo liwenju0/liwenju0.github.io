@@ -326,6 +326,7 @@ img {
   padding: 3px 0;
   display: flex;  
   align-items: center;  /* 修改为center以确保垂直居中对齐 */
+  justify-content: space-between; /* 添加此行，使标题和日期分别靠左右对齐 */
   border-bottom: 1px dashed #e2d5d5;
   line-height: 1.5;  /* 添加行高确保文本对齐 */
 }
@@ -337,8 +338,9 @@ img {
 .recent-post-item .post-date {
   font-size: 0.85em;
   color: #666;
-  margin-left: 8px;
+  margin-left: auto; /* 修改：从固定margin-left改为auto，确保日期靠右 */
   min-width: 85px;
+  text-align: right; /* 添加此行，确保日期文字右对齐 */
   line-height: inherit;  /* 继承父元素的行高 */
 }
 
