@@ -264,6 +264,10 @@ img {
   margin-bottom: 30px; /* 增加下边距，使其与下一篇文章有更大间距 */
 }
 
+.read-more a:hover {
+  color: #d7530b;
+}
+
 
 /* 年份标题样式 */
 .year-title {
