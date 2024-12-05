@@ -308,6 +308,10 @@ img {
   flex-shrink: 0;
 }
 
+.blog-links a:hover {
+  color: #d7530b;
+}
+
 .blog-links .description {
   color: #666;
   margin-left: 8px;
