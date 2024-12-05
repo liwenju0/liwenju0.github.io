@@ -242,6 +242,10 @@ img {
   text-decoration: none;  /* 移除下划线 */
 }
 
+.post-title a:hover  {
+  color: #d7530b;  /* 链接颜色 */
+}
+
 .post-title .post-date {
   float: right;
   padding: 0 5px;
