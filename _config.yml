@@ -8,7 +8,7 @@ github: liwenju0
 author: "李文举"
 name: "文举的博客"
 url: http://liwenju0.com
-domain: liwenju0.github.com
+domain: liwenju0.com
 all_categories: [
 ["ai", "人工智能","/posts/ai.html"],
 ["basis", "计算机基础","/posts/basis.html"],
