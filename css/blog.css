@@ -419,3 +419,39 @@ mjx-container::-webkit-scrollbar-thumb {
 mjx-container::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
+
+/* MathJax 行间公式样式 */
+.MathJax[display="true"] {
+  color: blue !important;
+  font-size: 115% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  display: block !important;
+  padding: 10px 0;
+}
+
+/* MathJax 行内公式样式 */
+.MathJax:not([display="true"]) {
+  color: blue !important;
+  font-size: 100% !important;
+  display: inline !important;
+  padding: 0;
+}
+
+/* MathJax 行间公式容器样式 */
+mjx-container[display="true"] {
+  font-size: 115% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  display: block !important;
+  padding: 10px 0;
+}
+
+/* MathJax 行内公式容器样式 */
+mjx-container:not([display="true"]) {
+  font-size: 100% !important;
+  display: inline !important;
+  padding: 0;
+}
