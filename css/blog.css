@@ -385,3 +385,33 @@ img {
 .categories .list-unstyled li a:hover {
   color: #d7530b;
 }
+
+/* MathJax 容器样式 */
+mjx-container {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  display: block !important;
+  padding: 10px 0;
+}
+
+.MathJax {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  display: block !important;
+}
+
+/* 确保公式可以水平滚动 */
+mjx-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+mjx-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+mjx-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
