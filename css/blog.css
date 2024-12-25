@@ -124,7 +124,7 @@ img {
   }
   
   .anim_content h1 {
-    font-size: 2em; /* 调整移动端字体大小 */
+    font-size: 2em; /* 调整��动端字体大小 */
   }
   
   .anim_content p {
@@ -145,55 +145,68 @@ img {
 
 /* 代码块容器样式 */
 .highlight {
-    border-radius: 10px;  /* 增加圆角半径 */
-    overflow: hidden;     /* 添加overflow:hidden来限制阴影 */
+    border-radius: 10px;
+    overflow: hidden;
     background: #f0f0f0;
     margin: 1em 0;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.1); /* 使用内阴影替代 */
-    border: 1px solid #e0e0e0;    /* 添加边框 */
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+    position: relative;
+    width: 100%;
 }
 
-/* 确保代码不换行 */
-.highlight pre,
+/* 确保代码不换行且可以滚动 */
+.highlight pre {
+    margin: 0;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: pre;
+    word-wrap: normal;
+    width: 100%;
+}
+
 .highlight code {
-    white-space: pre !important;
-    word-wrap: normal !important;
-    word-break: normal !important;
-    overflow-x: auto !important;
-    width: max-content;
+    display: inline-block;
     min-width: 100%;
-    padding: 10px;      /* 添加内边距 */
-    margin: 0;          /* 移除外边距 */
+    white-space: pre;
+    word-wrap: normal;
+    padding: 0;
 }
 
 /* 美化滚动条 */
-.highlight::-webkit-scrollbar {
-  height: 8px;
+.highlight pre::-webkit-scrollbar {
+    height: 8px;
 }
 
-.highlight::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
+.highlight pre::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
 }
 
-.highlight::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.highlight pre::-webkit-scrollbar-track {
+    background: #f1f1f1;
 }
 
 /* 确保代码内容不会被截断 */
 .highlight table {
-  margin: 0;
-  width: max-content;
-  min-width: 100%;
+    margin: 0;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .highlight td {
-  padding: 0;
+    padding: 0;
 }
 
 .highlight .lineno {
-  padding: 0 10px;
-  border-right: 1px solid #ccc;
+    padding: 0 10px;
+    border-right: 1px solid #ccc;
+    text-align: right;
+    color: #999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .baidu-tongji {
@@ -342,7 +355,7 @@ img {
   padding: 3px 0;
   display: flex;  
   align-items: center;  /* 修改为center以确保垂直居中对齐 */
-  justify-content: space-between; /* 添加此行，使标题和日期分别靠左右对齐 */
+  justify-content: space-between; /* 添加此行，使标题和日期分别靠左���对齐 */
   /* border-bottom: 1px dashed #e2d5d5; */
   line-height: 1.5;  /* 添加行高确保文本对齐 */
 }
