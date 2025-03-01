@@ -189,9 +189,22 @@ $$
 这两步用来计算$Q_i$分块对$K_j, V_j$分块的$m_{ij}, l_{ij}$
 
 
-11:$\rightarrow\rightarrow$On chip, compute $m_i^{new} = \max(m_i, m̃_{ij}) \in \mathbb{R}^{B_r}, ℓ_i^{new} = e^{(m_i-m_i^{new})} ℓ_i + e^{(m̃_{ij}-m_i^{new})} ℓ̃_{ij} \in \mathbb{R}^{B_r}$.
+11:$\rightarrow\rightarrow$On chip, compute 
 
-12:$\rightarrow\rightarrow$ Write $O_i ← \text{diag}(ℓ_i^{new})^{-1}(\text{diag}(ℓ_i)e^{(m_i-m_i^{new})}O_i + e^{(m̃_{ij}-m_i^{new})}P̃_{ij} V_j)$ to HBM.
+$$
+m_i^{new} = \max(m_i, m̃_{ij}) \in \mathbb{R}^{B_r}
+$$
+
+$$
+ℓ_i^{new} = e^{(m_i-m_i^{new})} ℓ_i + e^{(m̃_{ij}-m_i^{new})} ℓ̃_{ij} \in \mathbb{R}^{B_r}
+$$
+12:$\rightarrow\rightarrow$ Write 
+
+$$
+O_i \leftarrow \text{diag}(\ell_i^{new})^{-1}(\text{diag}(\ell_i)e^{(m_i-m_i^{new})}O_i + e^{(m̃_{ij}-m_i^{new})}P̃_{ij} V_j)
+$$ 
+
+to HBM.
 
 这两步就是更新$m, \ell, o$
 
