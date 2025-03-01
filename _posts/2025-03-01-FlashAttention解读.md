@@ -196,25 +196,34 @@ m_i^{new} = \max(m_i, m̃_{ij}) \in \mathbb{R}^{B_r}
 $$
 
 $$
-ℓ_i^{new} = e^{(m_i-m_i^{new})} ℓ_i + e^{(m̃_{ij}-m_i^{new})} ℓ̃_{ij} \in \mathbb{R}^{B_r}
+\ell_i^{new} = e^{(m_i-m_i^{new})} \ell_i + e^{(m̃_{ij}-m_i^{new})} \ell̃_{ij} \in \mathbb{R}^{B_r}
 $$
+
 12:$\rightarrow\rightarrow$ Write 
 
 $$
-O_i \leftarrow \text{diag}(\ell_i^{new})^{-1}(\text{diag}(\ell_i)e^{(m_i-m_i^{new})}O_i + e^{(m̃_{ij}-m_i^{new})}P̃_{ij} V_j)
+    O_i \leftarrow \text{diag}(\ell_i^{new})^{-1}(\text{diag}(\ell_i)e^{(m_i-m_i^{new})}O_i + e^{(m̃_{ij}-m_i^{new})}P̃_{ij} V_j)
 $$ 
 
 to HBM.
 
 这两步就是更新$m, \ell, o$
 
-13: $\rightarrow\rightarrow$Write $ℓ_i ← ℓ_i^{new}, m_i ← m_i^{new}$ to HBM.
+13: $\rightarrow\rightarrow$Write 
+
+$$
+\ell_i \leftarrow \ell_i^{new}, m_i \leftarrow m_i^{new}
+$$ 
+
+to HBM.
 
 14:$\rightarrow$end for
 
+遍历完$Q$分块后，将$m, \ell, o$写回HBM。
+
 15: end for
 
-16: Return $O$.
+遍历完$K,V$分块后，返回$O$。
 
 
 ## 4、cuda极简实现
