@@ -172,7 +172,19 @@ $B_c$ 是$K, V$分块的大小，$B_r$ 是$Q$分块的大小。
 
 9:$\rightarrow\rightarrow$On chip, compute $S_{ij} = Q_i K_j^T \in \mathbb{R}^{B_r \times B_c}$.
 
-10:$\rightarrow\rightarrow$On chip, compute $m̃_{ij} = \text{rowmax}(S_{ij}) \in \mathbb{R}^{B_r}, P̃_{ij} = \exp(S_{ij} - m̃_{ij}) \in \mathbb{R}^{(B_r \times B_c)}, ℓ̃_{ij} = \text{rowsum}(P̃_{ij}) \in \mathbb{R}^{B_r}$.
+10:$\rightarrow\rightarrow$ On chip, compute  
+
+$$
+m̃_{ij} = \text{rowmax}(S_{ij}) \in \mathbb{R}^{B_r}
+$$
+
+$$
+P̃_{ij} = \exp(S_{ij} - m̃_{ij}) \in \mathbb{R}^{(B_r \times B_c)}
+$$
+
+$$
+\tilde\ell_{ij} = \text{rowsum}(P̃_{ij}) \in \mathbb{R}^{B_r}
+$$
 
 这两步用来计算$Q_i$分块对$K_j, V_j$分块的$m_{ij}, l_{ij}$
 
