@@ -128,7 +128,7 @@ Flash Attention总的思路是将K，V矩阵分块。然后通过循环逐个加
 
 ## 3、伪代码
 
-下面，我们结合伪代码，进行逐行分析。下面的伪代码来自原论文。
+下面，我们结合伪代码，进行逐行分析。下面的伪代码来自原论文。下面伪代码中开头的向右箭头是用来表示缩进的，方便展示循环层次。
 
 
 Require: Matrices $Q, K, V \in \mathbb{R}^{N \times d}$ in HBM, on-chip SRAM of size $M$.
