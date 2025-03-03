@@ -230,7 +230,7 @@ to HBM.
 
 ## 4、cuda极简实现
 
-https://github.com/tspeterkim/flash-attention-minimal
+[flash-attention-minimal](https://github.com/tspeterkim/flash-attention-minimal)
 
 这个repo有一个非常简明的cuda实现，是用来学习Flash Attention的很好材料。
 
