@@ -124,7 +124,7 @@ img {
   }
   
   .anim_content h1 {
-    font-size: 2em; /* 调整��动端字体大小 */
+    font-size: 2em; /* 调整移动端字体大小 */
   }
   
   .anim_content p {
@@ -145,11 +145,11 @@ img {
 
 /* 代码块容器样式 */
 .highlight {
-    border-radius: 10px;
+    border-radius: 0px;  /* 移除圆角效果 */
     overflow: hidden;
     background: #f0f0f0;
     margin: 1em 0;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: none;  /* 移除内阴影（立体效果） */
     border: 1px solid #e0e0e0;
     position: relative;
     width: 100%;
@@ -355,7 +355,7 @@ img {
   padding: 3px 0;
   display: flex;  
   align-items: center;  /* 修改为center以确保垂直居中对齐 */
-  justify-content: space-between; /* 添加此行，使标题和日期分别靠左���对齐 */
+  justify-content: space-between; /* 添加此行，使标题和日期分别靠左对齐 */
   /* border-bottom: 1px dashed #e2d5d5; */
   line-height: 1.5;  /* 添加行高确保文本对齐 */
 }
