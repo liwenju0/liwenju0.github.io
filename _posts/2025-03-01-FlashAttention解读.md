@@ -122,9 +122,9 @@ Flash Attention总的思路是将K，V矩阵分块。然后通过循环逐个加
 整个算法如下图所示：
 
 
-![](https://files.mdnice.com/user/1648/4555995f-4cdd-48ba-b46d-13b8e3559665.png)
+<!-- ![](https://files.mdnice.com/user/1648/4555995f-4cdd-48ba-b46d-13b8e3559665.png) -->
 
-
+![截屏2025-03-03 10.17.52](https://raw.githubusercontent.com/liwenju0/blog_pictures/main/pics/截屏2025-03-03 10.17.52.png)
 
 ## 3、伪代码
 
