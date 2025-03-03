@@ -133,46 +133,48 @@ Flash Attention总的思路是将K，V矩阵分块。然后通过循环逐个加
 
 Require: Matrices $Q, K, V \in \mathbb{R}^{N \times d}$ in HBM, on-chip SRAM of size $M$.
 
-1: Set block sizes $B_c = \lceil M/4d \rceil, B_r = \min(\lceil M/4d \rceil, d)$. 
+**1:** Set block sizes $B_c = \lceil M/4d \rceil, B_r = \min(\lceil M/4d \rceil, d)$. 
 
 $B_c$ 是$K, V$分块的大小，$B_r$ 是$Q$分块的大小。
 
 
-2: Initialize $O = (0)_{N \times d} \in \mathbb{R}^{N \times d}, \ell = (0)_N \in \mathbb{R}^N, m = (-\infty)_N \in \mathbb{R}^N$ in HBM.
+**2:** Initialize $O = (0)_{N \times d} \in \mathbb{R}^{N \times d}, \ell = (0)_N \in \mathbb{R}^N, m = (-\infty)_N \in \mathbb{R}^N$ in HBM.
 
 初始化$o, \ell, m$。根据上一节的原理，我们知道，这三个是用来逐步迭代用的。其中的o最终就是我们要的结果。
 
 
-3: Divide $Q$ into $T_r = \lceil N/B_r \rceil$ blocks $Q_1, ..., Q_{T_r}$ of size $B_r \times d$ each, and divide $K, V$ in to $T_c = \lceil N/B_c \rceil$ blocks $K_1, ..., K_{T_c}$ and $V_1, ..., V_{T_c}$, of size $B_c \times d$ each.
+**3:** Divide $Q$ into $T_r = \lceil N/B_r \rceil$ blocks $Q_1, ..., Q_{T_r}$ of size $B_r \times d$ each, and divide $K, V$ in to $T_c = \lceil N/B_c \rceil$ blocks $K_1, ..., K_{T_c}$ and $V_1, ..., V_{T_c}$, of size $B_c \times d$ each.
 
 将$Q, K, V$分别进行分块。
 
 
-4: Divide $O$ into $T_r$ blocks $O_1, ..., O_{T_r}$ of size $B_r \times d$ each, divide $\ell$ into $T_r$ blocks $\ell_1, ..., \ell_{T_r}$ of size $B_r$ each, divide $m$ into $T_r$ blocks $m_1, ..., m_{T_r}$ of size $B_r$ each.
+**4:** Divide $O$ into $T_r$ blocks $O_1, ..., O_{T_r}$ of size $B_r \times d$ each, divide $\ell$ into $T_r$ blocks $\ell_1, ..., \ell_{T_r}$ of size $B_r$ each, divide $m$ into $T_r$ blocks $m_1, ..., m_{T_r}$ of size $B_r$ each.
 
 同理，将$o,\ell, m$进行分块，需要留心，这里的分块是与$Q$保持一致的。
 
 
-5: for 1 ≤ j ≤ T_c do
+**5:** for 1 ≤ j ≤ T_c do
 
 遍历每一个$K,V$分块。
 
-6: $\rightarrow$Load $K_j, V_j$ from HBM to on-chip SRAM.
+**6:** $\rightarrow$Load $K_j, V_j$ from HBM to on-chip SRAM.
 
 将一个$K,V$分块加载到共享内存
 
-7: $\rightarrow\rightarrow$for 1 ≤ i ≤ T_r do
+**7:** $\rightarrow\rightarrow$for 1 ≤ i ≤ T_r do
 
 遍历每一个$Q$分块。
 
 
-8:$\rightarrow\rightarrow$Load $Q_i, O_i, \ell_i, m_i$ from HBM to on-chip SRAM.
+**8:**$\rightarrow\rightarrow$Load $Q_i, O_i, \ell_i, m_i$ from HBM to on-chip SRAM.
 
 将对应的$O, \ell, m$分块加载到共享内存。
 
-9:$\rightarrow\rightarrow$On chip, compute $S_{ij} = Q_i K_j^T \in \mathbb{R}^{B_r \times B_c}$.
+**9:**$\rightarrow\rightarrow$On chip, compute $S_{ij} = Q_i K_j^T \in \mathbb{R}^{B_r \times B_c}$.
 
-10:$\rightarrow\rightarrow$ On chip, compute  
+在共享内存中计算$Q_i$分块对$K_j$分块的注意力分数矩阵$S_{ij}$。
+
+**10:**$\rightarrow\rightarrow$ On chip, compute  
 
 $$
 m̃_{ij} = \text{rowmax}(S_{ij}) \in \mathbb{R}^{B_r}
@@ -189,17 +191,17 @@ $$
 这两步用来计算$Q_i$分块对$K_j, V_j$分块的$m_{ij}, l_{ij}$
 
 
-11:$\rightarrow\rightarrow$On chip, compute 
+**11:** $\rightarrow\rightarrow$ On chip, compute 
 
 $$
 m_i^{new} = \max(m_i, m̃_{ij}) \in \mathbb{R}^{B_r}
 $$
 
 $$
-\ell_i^{new} = e^{(m_i-m_i^{new})} \ell_i + e^{(m̃_{ij}-m_i^{new})} \ell̃_{ij} \in \mathbb{R}^{B_r}
+\ell_i^{new} = e^{(m_i-m_i^{new})} \ell_i + e^{(m̃_{ij}-m_i^{new})} \ell_{ij} \in \mathbb{R}^{B_r}
 $$
 
-12:$\rightarrow\rightarrow$ Write 
+**12:**$\rightarrow\rightarrow$ Write 
 
 $$
     O_i \leftarrow \text{diag}(\ell_i^{new})^{-1}(\text{diag}(\ell_i)e^{(m_i-m_i^{new})}O_i + e^{(m̃_{ij}-m_i^{new})}P̃_{ij} V_j)
@@ -209,7 +211,7 @@ to HBM.
 
 这两步就是更新$m, \ell, o$
 
-13: $\rightarrow\rightarrow$Write 
+**13:** $\rightarrow\rightarrow$ Write 
 
 $$
 \ell_i \leftarrow \ell_i^{new}, m_i \leftarrow m_i^{new}
@@ -217,11 +219,11 @@ $$
 
 to HBM.
 
-14:$\rightarrow$end for
+**14:** $\rightarrow$ end for
 
 遍历完$Q$分块后，将$m, \ell, o$写回HBM。
 
-15: end for
+**15:** end for
 
 遍历完$K,V$分块后，返回$O$。
 
