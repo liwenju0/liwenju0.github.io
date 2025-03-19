@@ -19,7 +19,7 @@ title: "关于：About"
 #### 2.联系方式
 GitHub: <https://github.com/liwenju0>{:target="_blank"} 
 
-微信:milter007
+Email: like4hub@gmail.com
 
 
 {% include comment.html %}
