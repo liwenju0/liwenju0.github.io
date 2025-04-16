@@ -15,7 +15,7 @@ FlashAttention从作者开源到被工业界普遍采纳，大概只用了一周
 
 其背后的算法硬件协同优化的思想，很可能会持续成为一种浪潮。最近deepseek开源的各种库，也深刻地体现着这种思想。
 
-作者的突出贡献是敏锐洞察到，Attention 算法是Memory bound的。基于此发现，进一步通过titling、online softmax等技术，巧妙地通过适当增加计算时间，减少全局内存读写，从而提升整体性能。
+作者的突出贡献是敏锐洞察到，Attention 算法是Memory bound的。基于此发现，进一步通过tiling、online softmax等技术，巧妙地通过适当增加计算时间，减少全局内存读写，从而提升整体性能。
 
 
 ## 2、算法原理
