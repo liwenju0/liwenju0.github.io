@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "shfl_xor_sync原语"
-date:   2025-04-22 13:20:08 +0800
+date:   2025-04-22 09:20:08 +0800
 category: "AI"
 published: true
 ---
