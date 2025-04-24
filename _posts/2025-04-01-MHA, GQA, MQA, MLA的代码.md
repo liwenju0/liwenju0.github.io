@@ -2,7 +2,7 @@
 layout: post
 title:  "MHA, GQA, MQA, MLA的代码"
 date:   2025-04-01 08:54:08 +0800
-category: "Transformer"
+category: "AI"
 published: true
 ---
 
