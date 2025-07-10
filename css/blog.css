@@ -147,7 +147,7 @@ img {
 .highlight {
     border-radius: 0px;  /* 移除圆角效果 */
     overflow: hidden;
-    background: #f0f0f0;
+    background: #f4f2f0;
     margin: 1em 0;
     box-shadow: none;  /* 移除内阴影（立体效果） */
     border: 1px solid #e0e0e0;
