@@ -10,7 +10,7 @@ published: true
 
 <!--more-->
 
-## 1、加载模型
+### 1、加载模型
 
 ```python
 def load_all_model():
@@ -31,7 +31,7 @@ def load_all_model():
 
 pe是位置编码，用来将音频和图像潜在表示进行位置编码，作为musetalk的输入。
 
-## 2、加载数字人形象
+### 2、加载数字人形象
 ```python
 def load_avatar(avatar_id):
     #self.video_path = '' #video_path
@@ -110,13 +110,12 @@ face_large[y-y_s:y1-y_s, x-x_s:x1-x_s]=face
 这行代码是把预测的精确图像嵌入到这个里面。
 最后，将face_large贴回到原图像。
 
-## 3、回答内容送入队列msgqueue
+### 3、回答内容送入队列msgqueue
 
 在对话系统中，用户输入内容后，会调用大模型获得回复。这些回复的文本内容会被分块处理，然后放入TTS队列中进行语音合成。
 
-### 文本分块逻辑
+**文本分块逻辑**
 
-#### 实现代码
 ```python
 def llm_response(message,nerfreal:BaseReal):
     start = time.perf_counter()
@@ -163,14 +162,13 @@ def llm_response(message,nerfreal:BaseReal):
     nerfreal.put_msg_txt(result)    
 ```
 
-### 分块规则
+**分块规则**
 - **分块触发条件**：`if len(result)>10:` - 当累积的文本长度超过10个字符时进行分块
 - **分割标点符号**：`",.!;:，。！？：；"` - 遇到这些标点符号时进行分割
 - **数据流向**：分块后的文本通过 `nerfreal.put_msg_txt(result)` 送入TTS队列
 
-### TTS队列管理
+**TTS队列管理**
 
-### BaseTTS类结构
 ```python
 class BaseTTS:
     def __init__(self, opt, parent:BaseReal):
@@ -194,41 +192,38 @@ class BaseTTS:
             self.msgqueue.put((msg,eventpoint))
 ```
 
-### 队列操作
+**队列操作**
 - **入队**：`put_msg_txt(msg, eventpoint)` - 将文本消息和事件点放入队列，这个事件点在下面再次提到eventpoint时，会转变成msgevent，请留心下。
 - **清空队列**：`flush_talk()` - 清空msgqueue并暂停状态
 
-### 关键音频参数
-
-#### 参数定义
+**参数定义**
 ```python
 self.fps = opt.fps # 20 ms per frame
 self.sample_rate = 16000
 self.chunk = self.sample_rate // self.fps # 320 samples per chunk (20ms * 16000 / 1000)
 ```
 
-#### 参数解析
+**参数解析**
 - **fps**：音频帧率，设置为每帧20ms，即每秒50帧（1000ms ÷ 20ms = 50）
 - **sample_rate**：音频采样率，16000Hz，表示每秒采集16000个音频采样点
 - **chunk**：每帧包含的采样点数量，计算公式为 `sample_rate ÷ fps = 16000 ÷ 50 = 320`
 
-### 参数关系理解
+**参数关系理解**
 - **帧（frame）**：时间上的片段单位，此处为20ms
 - **采样率（sample_rate）**：每秒钟采集的音频点数
 - **chunk**：每个时间帧（20ms）内包含的采样点数量
 
-### 重要性说明
 这三个参数对以下功能至关重要：
 - 音频与视频的同步
 - 后续送入musetalk进行预测
 - TTS分帧处理
 
-### 数据流与事件系统
+**数据流与事件系统**
 
-#### 音频数据流
 - `self.input_stream = BytesIO()` - 存储TTS后的音频波形数据流
 
-#### 事件点机制
+**事件点机制**
+
 `put_msg_txt`方法中的eventpoint作为系统事件总线，内容示例：
 ```python
 eventpoint={'status':'start','text':text,'msgevent':textevent}
@@ -236,13 +231,13 @@ eventpoint={'status':'start','text':text,'msgevent':textevent}
 这里的msgevent，就是上面put_msg_txt提到的eventpoint。这里相当于是有一个层级机制。
 
 
-#### 事件点功能
+**事件点功能**
 - 可传递到前端网页
 - 控制音频视频同步
 - 实现字幕同步高亮
 - 支持更复杂的控制功能
 
-## 4、tts处理msgqueue
+### 4、tts处理msgqueue
 
 我们看BaseTTS中的如下代码：
 ```python
@@ -353,13 +348,13 @@ def put_audio_frame(self,audio_chunk,eventpoint=None): #16khz 20ms pcm
 
 至此，我们简短总结下处理流程。llm生成的回复，经过文本分块，送入TTS队列，TTS队列中的文本，经过tts处理，生成音频数据流，送入BaseASR中。
 
-## 5、asr处理queue
+### 5、asr处理queue
 进入BaseASR中的queue的音频数据流，是怎么被使用的呢？
 按照设计，应该是传递给whisper模型，提取特征，然后送入musetalk模型，得到口型，然后将口型贴到对应的视频帧，最后，将视频帧和语音一起发送给前端。
 
 该项目到这里涉及大量的异步线程，导致追踪执行过程比较难。我只能先按照我自己的思路记录下来处理过程，最后看看能不能按照线程逻辑串起来吧。
 
-### 提取特征
+**提取特征**
 这一步是在MuseAsr中的run_step中完成的。
 ```python
 def run_step(self):
@@ -486,7 +481,7 @@ self.feat_queue.put(whisper_chunks)
 
 这里想说明下，大量的异步线程都是通过queue进行交互的，所以搞清楚每个queue里面有什么很关键。
 
-## 5、musetalk预测
+### 5、musetalk预测
 musetalk模型需要的音频特征已经放到feat_queue里面了。
 class  MuseReal里面会启动一个inference线程，用来处理模型推理。
 
@@ -663,7 +658,7 @@ for i,res_frame in enumerate(recon):
 1、res_frame_queue的大小是batch_size * 2 ，限制大小，防止处理太快却播放慢，导致queue容量爆炸。
 2、原始的视频帧存储的是index，不是图片数据，音频帧是数据。
 
-## 6、最后拼接视频，将音频和视频送入对应的track队列
+### 6、拼接视频，将音频和视频送入对应的track队列
 
 MuseReal里面render函数新起一个线程专门处理这个过程。
 ```python
@@ -881,12 +876,11 @@ if time.time() - _transition_start < _transition_duration and _last_silent_frame
     alpha = min(1.0, (time.time() - _transition_start) / _transition_duration)
     combine_frame = cv2.addWeighted(_last_silent_frame, 1-alpha, current_frame, alpha, 0)
 
-关键要点
 
-过渡时长：默认 0.1 秒
-混合算法：使用 cv2.addWeighted 按时间比例混合两帧
-透明度变化：alpha 值从 0 到 1 线性变化，实现淡入淡出效果
-帧缓存更新：过渡完成后更新对应的帧缓存
+**过渡时长**：默认 0.1 秒
+**混合算法**：使用 cv2.addWeighted 按时间比例混合两帧
+**透明度变化**：alpha 值从 0 到 1 线性变化，实现淡入淡出效果
+**帧缓存更新**：过渡完成后更新对应的帧缓存
 
 这样实现了视觉上的平滑过渡，避免了状态切换时的突兀感。
 ```
@@ -908,7 +902,7 @@ new_frame.sample_rate=16000
 ```
 这里planes代表声道， mono代表单声道， s16代表16有符号数。
 
-## 7、推送到客户浏览器
+### 7、推送到客户浏览器
 
 上面的代码中，处理好的音频和视频数据都通过audio_track和video_track送入各自的队列中。这两个队列在`PlayerStreamTrack`，按照音频20ms一次，视频40ms一次的频率不断取出，送给客户端。
 ```python
@@ -1033,7 +1027,7 @@ async def run(push_url,sessionid):
 这里pc.addTrack就将音频和视频track加入了aiortc，它将不断调用recv获取数据，根据时间戳发送。 recv这个方法签名来自aiortc中的MediaStreamTrack。PlayerStreamTrack继承了这个类并实现了该方法。
 
 
-## 8、webrtc创建连接的过程
+### 8、webrtc创建连接的过程
 
 这个项目中，大家使用反馈最多就是webrtc连接不上。这里梳理下连接创建的过程。
 
@@ -1230,7 +1224,7 @@ async def on_icecandidate(event):
 这几个装饰器方法，用来监控连接建立过程中的事件。
 
 
-## 9、总结
+### 9、总结
 以上，就是对livetalking项目运行过程的一个总结，以备忘查。
 
 
