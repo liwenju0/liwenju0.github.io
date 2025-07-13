@@ -331,13 +331,14 @@ class EdgeTTS(BaseTTS):
         except Exception as e:
             logger.exception('edgetts')
 ```
-`txt_to_audio`的整体处理逻辑是，先通过self.__main生成音频wavform数据，存入self.input_stream中。
-然后，在`__create_bytes_stream`中，使用soundfile这个库读取self.input_stream中的数据，得到采样数据和采样率，采样数据如果是多声道，则只取第一个声道。
-最后，如果采样率不是16000Hz，则使用resampy这个库进行重采样，使其满足16000Hz的采样率。
-最后，返回采样数据。
+`txt_to_audio`的整体处理逻辑是，先通过`self.__main`生成音频wavform数据，存入`self.input_stream`中。
+然后，在`__create_bytes_stream`中，使用`soundfile`这个库读取`self.input_stream`中的数据，得到采样数据和采样率，采样数据如果是多声道，则只取第一个声道。
+
+如果采样率不是16000Hz，则使用resampy这个库进行重采样，使其满足16000Hz的采样率。
+返回采样数据。
 这样，一段文本，就变成一个音频数据流。也就是一个float32的一维数组。
 
-之后，就按照320个一个chunk，送入parent.put_audio_frame中。这个最后是调用的BaseASR中的put_audio_frame方法。
+之后，就按照320个一个chunk，送入`parent.put_audio_frame`中。这个最后是调用的BaseASR中的put_audio_frame方法。
 
 ```python
 def put_audio_frame(self,audio_chunk,eventpoint=None): #16khz 20ms pcm
@@ -349,8 +350,8 @@ def put_audio_frame(self,audio_chunk,eventpoint=None): #16khz 20ms pcm
 至此，我们简短总结下处理流程。llm生成的回复，经过文本分块，送入TTS队列，TTS队列中的文本，经过tts处理，生成音频数据流，送入BaseASR中。
 
 ### 5、asr处理queue
-进入BaseASR中的queue的音频数据流，是怎么被使用的呢？
-按照设计，应该是传递给whisper模型，提取特征，然后送入musetalk模型，得到口型，然后将口型贴到对应的视频帧，最后，将视频帧和语音一起发送给前端。
+进入`BaseASR`中的`queue`的音频数据流，是怎么被使用的呢？
+按照设计，应该是传递给`whisper`模型，提取特征，然后送入`musetalk`模型，得到口型，然后将口型贴到对应的视频帧，最后，将视频帧和语音一起发送给前端。
 
 该项目到这里涉及大量的异步线程，导致追踪执行过程比较难。我只能先按照我自己的思路记录下来处理过程，最后看看能不能按照线程逻辑串起来吧。
 
@@ -375,12 +376,14 @@ def run_step(self):
     self.frames = self.frames[-(self.stride_left_size + self.stride_right_size):]
 ```
 这里关注几个点：
-1、因为音频是20ms一帧，视频是40ms一帧，所以，这里需要提取batch_size*2个音频帧，然后送入whisper模型，提取特征。才能保证视频和音频同步。
-2、我debug时设置的batch size是64，结果frames是148，多了20帧，这20帧在开始的warm up阶段被填充为全0。正好self.stride_left_size + self.stride_right_size相加为20。然后run_step结束后，还会继续保留20帧，如下代码所示
+1、因为音频是20ms一帧，视频是40ms一帧，所以，这里需要提取`batch_size*2`个音频帧，然后送入whisper模型，提取特征。才能保证视频和音频同步。
+
+2、我debug时设置的batch size是64，结果frames是148，多了20帧，这20帧在开始的warm up阶段被填充为全0。正好`self.stride_left_size + self.stride_right_size`相加为20。然后run_step结束后，还会继续保留20帧，如下代码所示
 ```python
 self.frames = self.frames[-(self.stride_left_size + self.stride_right_size):]
 ```
-3、这里同步将音频帧送入output_queue中，output_queue是用来给webrtc使用的。看起来和BaseASR中的queue是同样的内容，但是从数据结构上看， output_queue多进程安全的。
+
+3、这里同步将音频帧送入`output_queue`中，`output_queue`是用来给webrtc使用的。看起来和BaseASR中的queue是同样的内容，但是从数据结构上看， output_queue多进程安全的。
 ```python
  self.queue = Queue()
 self.output_queue = mp.Queue()
@@ -389,7 +392,7 @@ self.output_queue = mp.Queue()
 经过```whisper_feature = self.audio_processor.audio2feat(inputs)```得到的`whisper_feature`的shape是
 `(148, 5, 384)`。
 这里面的音频变换过程，我点进去看了看，比较复杂，汉宁窗、短时傅里叶变换等等，这里先不深究。总之得到的结果第一维度是和self.frames的数量对齐的。知道这一点就不妨碍继续下去。
-随后就是`feature2chunks`方法，这一点需要特别留心，musetalk和musetalk1.5中关于这个方法是不同的，一不小心就会搞错。
+随后就是`feature2chunks`方法，这一点需要特别留心，`musetalk`和`musetalk1.5`中关于这个方法是不同的，一不小心就会搞错。
 这个方法是和具体的唇形对齐模型高度相关的。因为需要将音频特征的shape整理成唇形对齐模型需要的。
 总体的逻辑，可见：
 ```python
@@ -444,30 +447,31 @@ def get_sliced_feature(self,
 ```
 claude给出的简单解说：
 ```
-1、feature2chunks函数：
+1、`feature2chunks`函数：
 
 循环batch_size次，每次处理一个视频帧
 对于每个视频帧位置i，调用get_sliced_feature提取对应的音频特征片段
 将所有提取的特征片段收集到whisper_chunks列表中
 
-2、get_sliced_feature函数：
+2、`get_sliced_feature`函数：
 
-计算中心位置：center_idx = int(vid_idx*50/fps)，这是关键的帧率转换
+计算中心位置：`center_idx = int(vid_idx*50/fps)`，这是关键的帧率转换
 
 由于音频特征是50fps，视频是25fps，所以视频第i帧对应音频的第i*2个位置
 
 
 确定提取范围：以中心位置为基准，向左右扩展
 
-左边界：center_idx - audio_feat_length[0]*2
-右边界：center_idx + (audio_feat_length[1]+1)*2
+左边界：`center_idx - audio_feat_length[0]*2`
+右边界：`center_idx + (audio_feat_length[1]+1)*2`
 
 
 提取特征：在这个范围内逐个取出音频特征，并处理边界情况（不超出数组范围）
-最后将提取的特征拼接成固定形状(-1, 384)
+最后将提取的特征拼接成固定形状`(-1, 384)`
 
 简单理解
-假设audio_feat_length=[2,2]，那么每个视频帧会提取对应的10个音频特征帧（左4个+右6个），这样可以为每个视频帧提供足够的音频上下文信息。
+
+假设`audio_feat_length=[2,2]`，那么每个视频帧会提取对应的10个音频特征帧（左4个+右6个），这样可以为每个视频帧提供足够的音频上下文信息。
 
 需要强调一点，实际代码中，start的值是5，表示跳过音频前5帧，这5帧认为是不稳定的。
 ```
@@ -477,13 +481,13 @@ claude给出的简单解说：
 self.feat_queue.put(whisper_chunks)
 ```
 
-这里总结下，feat_queue是未来送入musetalk要用的音频特征。output_queue是未来要送入webrtc的音频流的数据。output_queue还是按照20ms一帧的，feat_queue已经是40ms一帧了。
+这里总结下，`feat_queue`是未来送入`musetalk`要用的音频特征。`output_queue`是未来要送入`webrtc`的音频流的数据。`output_queue`还是按照20ms一帧的，`feat_queue`已经是40ms一帧了。
 
 这里想说明下，大量的异步线程都是通过queue进行交互的，所以搞清楚每个queue里面有什么很关键。
 
 ### 5、musetalk预测
-musetalk模型需要的音频特征已经放到feat_queue里面了。
-class  MuseReal里面会启动一个inference线程，用来处理模型推理。
+`musetalk`模型需要的音频特征已经放到`feat_queue`里面了。
+`class  MuseReal`里面会启动一个inference线程，用来处理模型推理。
 
 ```python
 class MuseReal:
@@ -510,7 +514,8 @@ class MuseReal:
             self.timesteps))
         .start()
 ```
-下面就是inference方法:
+
+下面就是`inference`方法:
 ```python
 @torch.no_grad()
 def inference(render_event,batch_size,input_latent_list_cycle,audio_feat_queue,audio_out_queue,res_frame_queue,
@@ -570,10 +575,10 @@ def inference(render_event,batch_size,input_latent_list_cycle,audio_feat_queue,a
                 index = index + 1
     logger.info('musereal inference processor stop')
 ```
-可以看到，首先就是从feature_queue取出一个batch_size 的音频特征。
-然后从output_queue取出 batch_size \* 2个音频块。如果对前面各种queue的记录还比较清楚，这里应该能明白，为什么一个是batch_size个，一个是2乘以batch_size个。
+可以看到，首先就是从`feature_queue`取出一个`batch_size` 的音频特征。
+然后从`output_queue`取出 `batch_size * 2`个音频块。如果对前面各种`queue`的记录还比较清楚，这里应该能明白，为什么一个是`batch_size`个，一个是2乘以batch_size个。
 
-然后，根据output_queue中的音频帧的type是不是0判断是不是静音帧，如果是静音帧，就不用进行后面的推理，直接在res_frame_queue放入一个空帧。
+然后，根据`output_queue`中的音频帧的`type`是不是0判断是不是静音帧，如果是静音帧，就不用进行后面的推理，直接在`res_frame_queue`放入一个空帧。
 
 这里，我们暂停下，看看系统对静音帧的整体处理流程。
 
@@ -598,7 +603,7 @@ class BaseASR:
         return frame,type,eventpoint 
 ```
 可以看到，这里从queue获取音频帧，获取到，则type就是0，如果queue是空的，就会判断能否从self.parent获取音频帧和状态。
-self.parent就是MuseReal
+`self.parent`就是`MuseReal`
 ```python
 class MuseReal(BaseReal):
     @torch.no_grad()
@@ -620,7 +625,7 @@ class MuseReal(BaseReal):
 
         self.asr = MuseASR(opt,self,self.audio_processor)
 ```
-最终，`get_audio_stream`就是调用的BaseReal中的对应方法：
+最终，`get_audio_stream`就是调用的`BaseReal`中的对应方法：
 ```python
 class BaseReal:
     def __init__(self, opt,config):
@@ -642,20 +647,20 @@ class BaseReal:
         return stream
     
 ```
-这里其实就是动作编排的核心代码。简单讲，就是根据curr_state，加载播放对应的音频和视频帧。直接拿来播放。img_cycle和audio_cycle是对应的存储，img_index和audio_index是当前播放到的位置。这几个字典字段的key就是所有可用的curr_state值。
+这里其实就是动作编排的核心代码。简单讲，就是根据`curr_state`，加载播放对应的音频和视频帧。直接拿来播放。`img_cycle`和`audio_cycle`是对应的存储，`img_index`和`audio_index`是当前播放到的位置。这几个字典字段的`key`就是所有可用的`curr_state`值。
 
 
-回到我们的inference上，后面就是整理特征， 预测，写入res_frame_queue。这里又出现了一个queue。
+回到我们的`inference`上，后面就是整理特征， 预测，写入`res_frame_queue`。这里又出现了一个queue。
 其里面的值是：
 ```python
 for i,res_frame in enumerate(recon):
     res_frame_queue.put((res_frame,__mirror_index(length,index),audio_frames[i*2:i*2+2]))
     index = index + 1
 ```
-元素有三部分组成，第一部分是预测的口型图，第二部分是对应的图片帧的index，第三部分是对应的音频数据。因为是audio_frames是从output_queue中取出的，所以这里要2个。如果觉得有点疑惑，可以返回上面看看各种queue的数据管道。
+元素有三部分组成，第一部分是预测的口型图，第二部分是对应的图片帧的index，第三部分是对应的音频数据。因为是`audio_frames`是从`output_queue`中取出的，所以这里要2个。如果觉得有点疑惑，可以返回上面看看各种queue的数据管道。
 
 这里有两点性能优化的地方，需要提一下：
-1、res_frame_queue的大小是batch_size * 2 ，限制大小，防止处理太快却播放慢，导致queue容量爆炸。
+1、`res_frame_queue`的大小是`batch_size * 2`，限制大小，防止处理太快却播放慢，导致queue容量爆炸。
 2、原始的视频帧存储的是index，不是图片数据，音频帧是数据。
 
 ### 6、拼接视频，将音频和视频送入对应的track队列
@@ -672,11 +677,12 @@ class MuseReal:
         process_thread = Thread(target=self.process_frames, args=(quit_event,loop,audio_track,video_track))
         process_thread.start()
 ```
-上面的`process_frames就是处理拼接返回的。
-loop， audio_track, video_track是与webrtc相关的概念， loop是webrtc的主线程循环。audio_track,video_track分别用来将音频和视频放到webrtc队列。
-为了能在线程中向webrtc的主线程添加数据，所以一并将loop也当成参数送入线程了。关于webrtc，待会儿专门集中讲解下，这里有点困惑也不要紧，不用深究。
+上面的`process_frames`就是处理拼接返回的。
 
-render函数看起来是一个重要入口，我们再来详细看看：
+`loop， audio_track, video_track`是与`webrtc`相关的概念， `loop`是`webrtc`的主线程循环。`audio_track,video_track`分别用来将音频和视频放到`webrtc`队列。
+为了能在线程中向webrtc的主线程添加数据，所以一并将`loop`也当成参数送入线程了。关于`webrtc`，待会儿专门集中讲解下，这里有点困惑也不要紧，不用深究。
+
+`render`函数看起来是一个重要入口，我们再来详细看看：
 ```python
 def render(self,quit_event,loop=None,audio_track=None,video_track=None):
         #if self.opt.asr:
@@ -701,33 +707,33 @@ def render(self,quit_event,loop=None,audio_track=None,video_track=None):
             t = time.perf_counter()
             self.asr.run_step()
 ```
-它自身的while循环用来处理asr run_step方法。
-同时，在之前，tts.render启动tts线程。
+它自身的while循环用来处理`asr run_step`方法。
+同时，在之前，`tts.render`启动tts线程。
 然后又分别启动了推荐图片回贴，传输给webrtc的线程还有模型推理线程。
 
 那我就比较好奇了，这个render函数是在哪里调用的呢。
 
 我用大模型快速理了一个调用图：
 
-1. 客户端发起 WebRTC 连接
+1. 客户端发起 `WebRTC` 连接
    ↓
-2. app.py:offer() 创建 HumanPlayer(nerfreals[sessionid])
+2. `app.py:offer()` 创建 `HumanPlayer(nerfreals[sessionid])`
    ↓
 3. 客户端请求音视频轨道
    ↓
-4. PlayerStreamTrack.recv() 被调用
+4. `PlayerStreamTrack.recv()` 被调用
    ↓
-5. HumanPlayer._start() 被触发
+5. `HumanPlayer._start()` 被触发
    ↓
-6. 创建工作线程 player_worker_thread
+6. 创建工作线程 `player_worker_thread`
    ↓
-7. player_worker_thread 调用 container.render()
+7. `player_worker_thread` 调用 `container.render()`
    ↓
-8. MuseReal.render() 开始执行
+8. `MuseReal.render()` 开始执行
 
 其中第4步，是由aiortc框架负责调用的。
 
-又有点跑题，让我们再次聚焦process_frames方法：
+又有点跑题，让我们再次聚焦`process_frames`方法：
 ```python
 class MuseReal:
     def process_frames(self,quit_event,loop=None,audio_track=None,video_track=None):
@@ -849,40 +855,41 @@ class MuseReal:
             vircam.close()
         logger.info('basereal process_frames thread stop') 
 ```
-这个方法看起来比较复杂，实际逻辑是很简单的，就是从res_frame_queue中取出预测的口型结果、对应原始视频的帧索引，对应的音频数据，将预测结果回贴到原始图片，然后给webrtc返回对应的视频和音频。
+这个方法看起来比较复杂，实际逻辑是很简单的，就是从`res_frame_queue`中取出预测的口型结果、对应原始视频的帧索引，对应的音频数据，将预测结果回贴到原始图片，然后给webrtc返回对应的视频和音频。
 
-需要再次注意一下， res_frame_queue取出的视频预测帧是需要回贴到原始图像上的。得到音频audio_frames长度是2，因为是两个音频帧对应一个视频帧。
-每个元素是一个三元组(audio_data, type, eventpoint)
-audio_data就是320个音频采样数据，就是一个长度为320的浮点数组。type用来标记类型，0代表说话，1代表静音，大于1的值用来实现动作编排或者其他作用。
+需要再次注意一下， `res_frame_queue`取出的视频预测帧是需要回贴到原始图像上的。得到音频`audio_frames`长度是2，因为是两个音频帧对应一个视频帧。
+每个元素是一个三元组`(audio_data, type, eventpoint)`
+
+`audio_data`就是320个音频采样数据，就是一个长度为320的浮点数组。type用来标记类型，0代表说话，1代表静音，大于1的值用来实现动作编排或者其他作用。
 
 这里面添加了一个说话向静音过度和静音向说话过度的功能。
 我让claude总结了下：
 ```python
-核心机制
+# 核心机制
 
-状态检测：通过 audio_frames[0][1]!=0 and audio_frames[1][1]!=0 判断是否为静音状态
-过渡触发：状态变化时记录过渡开始时间 _transition_start
-帧缓存：保存上一帧的静音帧和说话帧用于混合
+# 状态检测：通过 audio_frames[0][1]!=0 and audio_frames[1][1]!=0 判断是否为静音状态
+# 过渡触发：状态变化时记录过渡开始时间 _transition_start
+# 帧缓存：保存上一帧的静音帧和说话帧用于混合
 
-过渡实现
-说话 → 静音过渡
-python# 在静音状态下，如果刚从说话状态切换过来
+# 过渡实现
+# 说话 → 静音过渡
+# python# 在静音状态下，如果刚从说话状态切换过来
 if time.time() - _transition_start < _transition_duration and _last_speaking_frame is not None:
     alpha = min(1.0, (time.time() - _transition_start) / _transition_duration)
     combine_frame = cv2.addWeighted(_last_speaking_frame, 1-alpha, target_frame, alpha, 0)
-静音 → 说话过渡
-python# 在说话状态下，如果刚从静音状态切换过来
+# 静音 → 说话过渡
+# python# 在说话状态下，如果刚从静音状态切换过来
 if time.time() - _transition_start < _transition_duration and _last_silent_frame is not None:
     alpha = min(1.0, (time.time() - _transition_start) / _transition_duration)
     combine_frame = cv2.addWeighted(_last_silent_frame, 1-alpha, current_frame, alpha, 0)
 
 
-**过渡时长**：默认 0.1 秒
-**混合算法**：使用 cv2.addWeighted 按时间比例混合两帧
-**透明度变化**：alpha 值从 0 到 1 线性变化，实现淡入淡出效果
-**帧缓存更新**：过渡完成后更新对应的帧缓存
+# **过渡时长**：默认 0.1 秒
+# **混合算法**：使用 cv2.addWeighted 按时间比例混合两帧
+# **透明度变化**：alpha 值从 0 到 1 线性变化，实现淡入淡出效果
+# **帧缓存更新**：过渡完成后更新对应的帧缓存
 
-这样实现了视觉上的平滑过渡，避免了状态切换时的突兀感。
+# 这样实现了视觉上的平滑过渡，避免了状态切换时的突兀感。
 ```
 这行代码： `current_frame = self.paste_back_frame(res_frame,idx)`
 实现了视频回贴。
@@ -900,11 +907,11 @@ new_frame = AudioFrame(format='s16', layout='mono', samples=frame.shape[0])
 new_frame.planes[0].update(frame.tobytes())  #planes代表声道  
 new_frame.sample_rate=16000
 ```
-这里planes代表声道， mono代表单声道， s16代表16有符号数。
+这里`planes`代表声道， `mono`代表单声道， `s16`代表16有符号数。
 
 ### 7、推送到客户浏览器
 
-上面的代码中，处理好的音频和视频数据都通过audio_track和video_track送入各自的队列中。这两个队列在`PlayerStreamTrack`，按照音频20ms一次，视频40ms一次的频率不断取出，送给客户端。
+上面的代码中，处理好的音频和视频数据都通过`audio_track`和`video_track`送入各自的队列中。这两个队列在`PlayerStreamTrack`，按照音频20ms一次，视频40ms一次的频率不断取出，送给客户端。
 ```python
 class PlayerStreamTrack(MediaStreamTrack):
     async def recv(self) -> Union[Frame, Packet]:
@@ -1024,12 +1031,12 @@ async def run(push_url,sessionid):
     
     video_sender = pc.addTrack(player.video)
 ```
-这里pc.addTrack就将音频和视频track加入了aiortc，它将不断调用recv获取数据，根据时间戳发送。 recv这个方法签名来自aiortc中的MediaStreamTrack。PlayerStreamTrack继承了这个类并实现了该方法。
+这里`pc.addTrack`就将音频和视频`track`加入了`aiortc`，它将不断调用`recv`获取数据，根据时间戳发送。 `recv`这个方法签名来自`aiortc`中的`MediaStreamTrack`。`PlayerStreamTrack`继承了这个类并实现了该方法。
 
 
 ### 8、webrtc创建连接的过程
 
-这个项目中，大家使用反馈最多就是webrtc连接不上。这里梳理下连接创建的过程。
+这个项目中，大家使用反馈最多就是`webrtc`连接不上。这里梳理下连接创建的过程。
 
 
 1. 客户端发起连接请求
@@ -1056,7 +1063,7 @@ async def offer(request):
 ```
 解析客户端发送的JSON参数
 
-创建RTCSessionDescription对象，包含客户端的SDP offer
+创建`RTCSessionDescription`对象，包含客户端的SDP offer
 
 2.2 会话管理
 
@@ -1080,11 +1087,11 @@ ice_server = RTCIceServer(urls='stun:stun.miwifi.com:3478')
 pc = RTCPeerConnection(configuration=RTCConfiguration(iceServers=[ice_server]))
 pcs.add(pc)
 ```
-这里的ice_server是用来帮助服务器发现自己的公网可访问地址的。
+这里的`ice_server`是用来帮助服务器发现自己的公网可访问地址的。
 
 配置STUN服务器用于NAT穿透
 
-创建RTCPeerConnection对象
+创建`RTCPeerConnection`对象
 
 将连接添加到全局连接集合中
 
@@ -1097,7 +1104,7 @@ answer = await pc.createAnswer()      # 创建answer
 await pc.setLocalDescription(answer)  # 设置本地描述
 
 ```
-这里的answer是服务器端发现的自己的连接candidates
+这里的`answer`是服务器端发现的自己的连接`candidates`
 ```
 [DEBUG] Server SDP: v=0
 o=- 3961364075 3961364075 IN IP4 0.0.0.0
@@ -1206,7 +1213,7 @@ response_data = {
 }
 return web.Response(content_type="application/json", text=json.dumps(response_data))
 ```
-这样，二者就是按照各自的candidates的优先级尝试连接。
+这样，二者就是按照各自的`candidates`的优先级尝试连接。
 
 ```python
 @pc.on("connectionstatechange")
