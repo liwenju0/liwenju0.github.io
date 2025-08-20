@@ -1,0 +1,11 @@
+---
+globs: _layouts/**/*.html,_includes/**/*.html
+---
+# Liquid 模板与包含文件约定
+
+- 使用 Liquid 模板语法渲染：优先沿用已有变量 `site`、`page`、`post`、`content`。
+- 新增片段应放入 [_includes](mdc:_includes/) 并通过 `{% include file.html %}` 引用；避免在布局内写入重复片段。
+- 不内联大量样式/脚本，优先引用现有资源 [css/blog.css](mdc:css/blog.css)、[js/jquery-1.11.0.js](mdc:js/jquery-1.11.0.js)、[js/bootstrap.min.js](mdc:js/bootstrap.min.js)。
+- SEO/统计：保留并正确引入 `baidu_tongji` 与 `adsense` 相关 include（见 [_includes/baidu_tongji.html](mdc:_includes/baidu_tongji.html)、[_includes/adsense.html](mdc:_includes/adsense.html)）。
+- 导航结构维护在 [_includes/navigation.html](mdc:_includes/navigation.html)；增删导航项在此集中修改。
+- 保持现有缩进与空白字符风格；不要自动格式化打乱 Liquid 标签。

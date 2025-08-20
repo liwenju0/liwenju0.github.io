@@ -1,0 +1,20 @@
+---
+globs: _posts/*.md
+---
+# 文章写作与文件命名规范
+
+- 文件名遵循 `YYYY-MM-DD-标题.md`，Jekyll 将以文件名中的日期为发布日期。
+- 每篇文章必须包含 YAML Front Matter：
+
+```yaml
+---
+layout: post
+title: 文章标题
+category: 分类
+tags: [标签1, 标签2]
+---
+```
+
+- 使用 Markdown 代码块并标注语言；数学公式如需启用，沿用站点当前配置（若未启用，请勿添加新依赖）。
+- 图片存放于 [assets/images](mdc:assets/images/) 并使用相对路径引用。
+- 尽量避免改动历史文章的语义内容；修正错别字或排版时遵循最小变更原则。

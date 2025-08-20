@@ -1,0 +1,9 @@
+---
+globs: css/*.css,assets/css/*.css
+---
+# CSS 修改准则
+
+- 保持选择器排列顺序与缩进风格，不进行大规模重排或自动格式化。
+- 避免引入预处理器语法（Sass/Less 等）；直接编写原生 CSS。
+- 新增样式尽量局部化，避免影响 [_layouts](mdc:_layouts/) 与 [_includes](mdc:_includes/) 的既有结构与样式。
+- 高亮样式位于 [assets/css/highlight.css](mdc:assets/css/highlight.css)，通用样式位于 [css/blog.css](mdc:css/blog.css)。

@@ -1,0 +1,9 @@
+---
+description: 站点本地预览与部署指引
+---
+# 预览与部署
+
+- 本地开发建议使用 Ruby/Bundler 运行 Jekyll，依赖定义见 [Gemfile](mdc:Gemfile)。
+- 预览与发布可参考 [deploy.sh](mdc:deploy.sh)；GitHub Pages 通常跟随 `main` 分支自动发布。
+- 不提交生成产物目录 `_site/`（若存在）。
+- 新增依赖或构建步骤需同步更新 [README.md](mdc:README.md)，并验证与 GitHub Pages 的兼容性。

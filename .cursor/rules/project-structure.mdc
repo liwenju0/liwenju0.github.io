@@ -1,0 +1,19 @@
+---
+alwaysApply: true
+---
+# 项目结构与约定
+
+- 站点使用 Jekyll + Liquid。入口配置在 [_config.yml](mdc:_config.yml)。
+- 页面布局位于 [_layouts/default.html](mdc:_layouts/default.html)、[_layouts/post.html](mdc:_layouts/post.html)、[_layouts/index.html](mdc:_layouts/index.html)。
+- 片段包含在 [_includes](mdc:_includes/) 目录，如 [navigation.html](mdc:_includes/navigation.html)、[recent_posts.html](mdc:_includes/recent_posts.html)、[baidu_tongji.html](mdc:_includes/baidu_tongji.html)。
+- 静态资源：样式在 [css/](mdc:css/)、[assets/css](mdc:assets/css/)；脚本在 [js/](mdc:js/)；图片在 [assets/images](mdc:assets/images/)。
+- 文章放在 [_posts](mdc:_posts/) 目录，文件名遵循 `YYYY-MM-DD-标题.md`。
+- 根级页面如 [index.html](mdc:index.html)、[categories.md](mdc:categories.md)、[tags.md](mdc:tags.md)、[archives.md](mdc:archives.md) 使用对应布局。
+- 发布：参考 [deploy.sh](mdc:deploy.sh) 与 [README.md](mdc:README.md)。
+
+## 通用编辑规则
+
+- 严格保留现有缩进与空白，不重排不对齐现有代码。
+- 不破坏 Liquid 语法：保留 `{% ... %}` 与 `{{ ... }}`，避免在其中插入多余空格或换行。
+- 仅在需要时最小化修改范围；避免大规模重构无关文件。
+- 链接与资源优先使用相对路径；不要硬编码域名。
