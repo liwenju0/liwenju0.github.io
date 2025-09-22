@@ -10,11 +10,11 @@ published: true
 
 <!--more-->
 
-## CMake 速查表 - 简明介绍 CMake
+### CMake 速查表 - 简明介绍 CMake
 
 这份速查表将给你一个关于 CMake 如何工作以及如何使用它来配置软件项目的想法。文档和 CMake 示例可以在 https://github.com/mortennobel/CMake-Cheatsheet 找到。
 
-## CMake - 创建一个简单的 C++ 项目
+### CMake - 创建一个简单的 C++ 项目
 
 CMake 是一个工具，用于配置跨平台源代码项目应该如何在给定平台上构建。一个小项目可能像这样组织：
 例1:
@@ -28,7 +28,7 @@ src/foo.hpp
 
 这个项目包含两个位于 src 目录的源文件和同一个目录中的一个头文件。在运行 CMake 时，你会被要求提供一个二进制目录。最好的做法是创建一个新目录，因为这个目录将包含所有与构建项目相关的文件。如果出现问题，你可以删除文件夹并重新开始。运行 CMake 不会创建最终的可执行文件，而是会生成 Visual Studio、XCode 或 make 文件的项目文件。使用这些工具来构建项目。
 
-## 理解 CMakeLists.txt
+### 理解 CMakeLists.txt
 
 使用 CMake 创建项目文件需要一个 CMakeLists.txt 文件，该文件描述了项目的架构以及应该如何构建。例1 的文件看起来像这样：
 
@@ -51,7 +51,7 @@ add_executable ( Hello src/main.cpp src/foo.cpp )
 ```
 由于文件位于与源文件相同的位置，编译器不会遇到任何问题。
 
-# CMake 脚本语言
+### CMake 脚本语言
 CMakeLists.txt 使用基于命令的编程语言描述构建过程。命令不区分大小写，并接受一系列参数。
 
 ```cmake
@@ -105,7 +105,7 @@ ENDFOREACH( val )
 # 3 
 # 2
 ```
-## 暴露编译选项
+### 暴露编译选项
 CMake 允许最终用户（运行 CMake 的人）修改一些变量的值。
 
 这通常用于定义构建的属性，如文件位置、机器架构和字符串值。
@@ -140,7 +140,7 @@ hello:BOOL=OFF
 // Not hello value
 other_msg:STRING=Guten tag // ....
 ```
-## 复杂项目
+### 复杂项目
 一些项目既包含多个可执行文件，也包含多个库。例如，当同时拥有单元测试和程序时。通常将这些子项目分离到子文件夹中。示例：
 
 ```
@@ -181,7 +181,7 @@ add_executable ( Hello main.cpp )
 # 链接到 Foo 库
 target_link_libraries ( Hello Foo)
 ```
-## 搜索源文件
+### 搜索源文件
 使用 find(GLOB varname patterns) 可以自动搜索给定目录中的文件，基于一个或多个搜索模式。注意，在下面的示例中，源文件和头文件都被添加到项目中。这对于编译项目并不需要，但在使用 IDE 时非常方便，因为这也会将头文件添加到项目中。IDE可以使用头文件给出更智能的提示和跳转。
 
 ```cmake
@@ -193,7 +193,7 @@ file(GLOB sourcefiles "src/*.hpp" "src/*.cpp")
 add_executable ( Hello ${sourcefiles} )
 ```
 
-## 运行时资源
+### 运行时资源
 
 运行时资源（如 DLL、游戏资产和文本文件）通常根据相对于可执行文件的路径来读取的。
 
@@ -224,7 +224,7 @@ file(COPY someexe/res.txt DESTINATION Debug)
 file(COPY someexe/res.txt DESTINATION Release)
 ```
 注意：这种方法的一个问题是，如果你修改了原始资源，那么你需要重新运行 CMake。
-## 外部库
+### 外部库
 外部库基本上有两种类型；动态链接库（DLLs）在运行时与二进制文件链接，静态链接库在编译时链接。
 
 静态库的设置最简单。要使用一个静态库，编译器需要知道在哪里找到头文件，链接器需要知道实际库的位置。
@@ -265,18 +265,18 @@ file(COPY ${foodll} DESTINATION Debug)
 file(COPY ${foodll} DESTINATION Release)
 ENDIF(WIN32)
 ```
-## 自动定位库
+### 自动定位库
 
 CMake 还包含一个特性，可以使用命令 find_package() 自动查找库（基于许多建议的位置）。然而，这个特性在 macOS 和 Linux 上效果最好。https://cmake.org/Wiki/CMake:How_To_Find_Libraries.
 
-## C++ 版本
+### C++ 版本
 可以使用以下命令设置 C++ 版本：
 ```cmake
 set (CMAKE_CXX_STANDARD 14)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 set (CMAKE_CXX_EXTENSIONS OFF)
 ```
-## 定义预处理器符号
+### 定义预处理器符号
 使用 add_definitions() 向项目添加预处理器符号。
 
 ```cmake
@@ -296,7 +296,7 @@ int main (){
     return 0;
 }
 ```
-## 链接和信息
+### 链接和信息
 https://cmake.org/Wiki/CMake/Language_Syntax
 
 https://cmake.org/cmake/help/v3.0/command/set.html
@@ -306,5 +306,5 @@ https://cmake.org/cmake/help/v3.0/command/set.html
 Latex 模板由 John Smith 创建，2015 http://johnsmith.com/
 根据 MIT 许可证发布。
 
-# 其他优秀参考资料
-https://zhuanlan.zhihu.com/p/534439206
+### 其他优秀参考资料
+[知乎-全网最细的CMake教程！强烈建议收藏](https://zhuanlan.zhihu.com/p/534439206) 
