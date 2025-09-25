@@ -11,8 +11,6 @@ title: "关于：About"
 ---
 
 ### 联系方式
-- **手机**：185 1872 2171  
-- **邮箱**：18518722171@126.com  
 - **博客**：<a href="http://www.liwenju0.com" target="_blank" rel="noopener">liwenju0.com</a>  
 - **GitHub**：**liwneju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）  
 - **知乎**：<a href="https://www.zhihu.com/people/li-dan-ran-71" target="_blank" rel="noopener">知乎主页</a>
