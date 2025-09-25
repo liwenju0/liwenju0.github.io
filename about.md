@@ -3,25 +3,121 @@ layout: default
 title: "关于：About"
 ---
 
-#### 1.基本信息
-**姓名**: Wenju Li (李文举)  
+### 个人简介
+专注自然语言处理与大语言模型落地，具备从模型设计、数据构建、训练微调、推理加速到工程部署的全栈能力。当前负责北京匠数科技 NLP 方向，长期聚焦大模型能力在政务、公考教育、内容审核与智能营销等业务中的规模化应用。
 
-**性别**: Male  
+**开源与社区**：活跃于开源社区，GitHub 账号 **liwneju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）。在 sglang、ragflow 等项目有多项 PR 贡献，聚焦推理优化与工程可用性提升。
 
-**城市**: Beijing, China   
+---
 
-**工作经历**: 匠数科技 (now) <- 华图教育 <- 阿里  
+### 联系方式
+- **手机**：185 1872 2171  
+- **邮箱**：18518722171@126.com  
+- **博客**：<a href="http://www.liwenju0.com" target="_blank" rel="noopener">liwenju0.com</a>  
+- **GitHub**：**liwneju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）  
+- **知乎**：<a href="https://www.zhihu.com/people/li-dan-ran-71" target="_blank" rel="noopener">知乎主页</a>
 
-**教育经历**: NUDT (国防科学技术大学) 
+---
 
-**爱好**: 机器学习，技术写作，交易，阅读  
+### 核心技能
+- **AI Infra/系统优化**：CUDA/算子优化与 FlashAttention 加速；性能基线、回归监控与容量规划  
+- **推理引擎与部署**：TensorRT 与 Triton Server（Repository Agent/模型加解密）；多模型版本治理与可重复部署  
+- **大模型工程**：预训练、SFT、LoRA、RLHF、RAG 端到端落地与评测；推理路径优化与资源成本优化  
+- **扩散模型/Step1X**：熟悉扩散模型原理与工程化实践，撰写多篇 Step1X 执行流程分析与优化笔记，具备落地与故障定位经验  
+- **编程与框架**：Python、Java，熟悉 C++；PyTorch、TensorFlow 框架及内部实现理解  
+- **NLP 任务与算法**：基于 Transformer 的文本分类、语义匹配与内容审核等  
+- **研究与表达**：中英文论文阅读与实现（CET‑6），工程文档与技术写作  
+- **全栈交付**：需求抽象→数据→训练→评测→部署→运维的闭环交付
 
-#### 2.联系方式
-**GitHub**: <https://github.com/liwenju0>{:target="_blank"} 
 
-**Email**: like4hub@gmail.com
 
-**zhihu**: <https://www.zhihu.com/people/li-dan-ran-71>{:target="_blank"}
+### 工作经历
+- **北京匠数科技有限公司｜NLP 方向负责人**（2022.05—至今）  
+  负责大模型在内容生成与内容安全方向的产品化及规模化部署。
+- **华图宏阳网络科技公司｜NLP 算法工程师**（2019.07—2022.05）  
+  负责公考教育场景 NLP 系统，包括作文批改、情感分析与智能营销等。
+- **阿里巴巴达摩院｜高级算法工程师**（2018.05—2019.06）  
+  参与对话系统与智能语音产品业务，产出面向规模用户的对话能力。
+- **解放军陆军｜现役军官**（2007.06—2018.05）
 
+---
+
+### 教育经历
+- 2010.08—2012.12 国防科学技术大学｜硕士｜公共管理（信息管理方向）  
+- 2003.08—2007.06 国防科学技术大学｜本科｜军队管理  
+说明：国防科学技术大学是军队唯一 985/211 院校；硕士为全国统招。
+
+---
+
+### 代表项目
+- **基于大模型的公文写作助手**（负责人，2022.07—2023.09）  
+  基于 tigerbot-13b 结合内部语料微调，实现政务公文智能写作（输入标题自动生成整篇）。  
+  - 业务价值：已在常州市政府部门落地，显著提升政务媒体写作效率。  
+  - 我的工作：数据构建与清洗；大模型微调与效果评估；部署与上线运营。
+
+- **网盯文本审核系统**（负责人，2022.05—至今）  
+  结合多模型实现文本审核、错别字校对与语法提醒。  
+  - 业务价值：公司核心产品，年营收近 700 万。  
+  - 我的工作：数据标注与评估；FastText/BERT 训练评估；工程部署与运维。
+
+- **作文智能批改**（核心人员，2019.07—2021.09）  
+  面向申论作文的自动批改系统。  
+  - 业务价值：业内首个深度学习公考作文批改系统；支撑 200+ 场在线模考，累计 100 万+ 人次。  
+  - 我的工作：整体算法方案；基于 Transformer 的论点/论据抽取评级（论点正确率 83%+）；知识融合与篇章结构融合提升匹配精度。
+
+- **客户智能营销系统**（负责人，2021.05—2022.02）  
+  基于用户行为序列的购课意向预测，为销售提供高意向线索。  
+  - 业务价值：提升销售效率，37% 业绩来自系统推荐。  
+  - 我的工作：需求调研与问题形式化；数据收集与模型验证（含 AB 测试）；工程架构与实现。
+
+- **学员评论情感分析**（核心人员，2021.03—2022.03）  
+  - 业务价值：累计为老师提供 8000+ 条课程建议，负面评论下降 30%。  
+  - 我的工作：Multi-Source Transformer 情感分类；TensorRT 推理加速（速度 +400%）；Active Learning 提升标注效率（+300%）。
+
+- **你想我猜·智能对话游戏**（项目组长 5 人，2018.06—2019.05）  
+  - 业务价值：助力天猫精灵 DAU 提升 2%+，全平台累计用户 300 万。  
+  - 我的工作：融合问题的回答意图识别（准确率 93%）；基于回传的对话状态管理（开发效率 +20%）；最大熵对话策略；模型迭代平台架构（热门人物智能发现）。
+
+- **二哈电话助手**（核心成员，2018.11—2019.05）  
+  - 业务价值：业界首创，上线后被 10+ 公司模仿；天猫精灵 APP DAU 提升 10%+。  
+  - 我的工作：立项调研与 DEMO；对话策略管理架构；意图识别模型设计与实现。
+
+---
+
+### 授权专利（节选）
+1. 一种中文议论文智能批改方法和系统（CN112784878A）  
+2. 一种文本分类的方法、装置、电子设备及存储介质（CN115982368A）  
+3. 一种文本内容异常检测的方法、装置、设备及介质（CN115809662A）  
+4. 一种文本纠错方法、装置、电子设备及介质（CN115630645A）  
+5. 一种文本检测的方法、装置、电子设备及存储介质（CN115563288A）  
+6. 文本内容审核方法、装置及电子设备（CN115587588A）
+
+---
+
+### 开源贡献与社区
+- **GitHub：liwneju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）  
+- **sglang PR（仓库内检索，含参与者）**：<a href="https://github.com/sgl-project/sglang/pulls?q=is%3Apr+involves%3Aliwenju0" target="_blank" rel="noopener">查看</a>  
+- **sglang PR（全局检索）**：<a href="https://github.com/pulls?q=is%3Apr+author%3Aliwenju0+sglang" target="_blank" rel="noopener">查看</a>  
+- **ragflow PR（仓库内检索，含参与者）**：<a href="https://github.com/InfiniFlow/ragflow/pulls?q=is%3Apr+involves%3Aliwenju0" target="_blank" rel="noopener">查看</a>  
+- **ragflow PR（全局检索）**：<a href="https://github.com/pulls?q=is%3Apr+author%3Aliwenju0+ragflow" target="_blank" rel="noopener">查看</a>  
+- **开源项目 cutword**：<a href="https://github.com/liwenju0/cutword" target="_blank" rel="noopener">github.com/liwenju0/cutword</a>  
+- 关注开源生态在产业落地中的工程质量、性能与可维护性。
+
+**代表性贡献（节选）**  
+- sglang：PR #5383「Feature: add support kimi vl model」（<a href="https://github.com/sgl-project/sglang/pull/5383" target="_blank" rel="noopener">链接</a>）  
+  - 合入主仓主分支（2025-04-30），共 79 次提交，影响 13 个文件（+1,189 / −11）  
+  - 引入 Kimi-VL 多模态模型支持（VL 推理路径与配置）  
+  - 增补 Kimi-VL 配置，兼容现有 DeepSeek 配置风格  
+  - 添加 embedding 获取方法，完善接口使用面  
+  - 本地用例验证覆盖图像理解场景（“What’s in this image?” 示例）
+
+---
+
+### 站内内容与近期更新
+- 文章索引：见站点导航的 `分类`、`标签` 与 `归档` 页面  
+- 最近更新：
+{% include recent_posts.html %}
+
+---
 
 {% include comment.html %}
