@@ -93,11 +93,9 @@ title: "关于：About"
 ---
 
 ### 开源贡献与社区
-- **GitHub：liwneju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）  
 - **sglang PR（仓库内检索，含参与者）**：<a href="https://github.com/sgl-project/sglang/pulls?q=is%3Apr+involves%3Aliwenju0" target="_blank" rel="noopener">查看</a>  
 - **ragflow PR（仓库内检索，含参与者）**：<a href="https://github.com/InfiniFlow/ragflow/pulls?q=is%3Apr+involves%3Aliwenju0" target="_blank" rel="noopener">查看</a>  
-- **开源项目 cutword**：<a href="https://github.com/liwenju0/cutword" target="_blank" rel="noopener">github.com/liwenju0/cutword</a>  
-  高效中文分词与命名实体识别工具，分词速度是 jieba 的 2 倍，基于 2024 年最新词典数据，支持自定义词典与升级词库，提供 NER 功能识别多种实体类型，适用于数据挖掘、搜索引擎、机器翻译等场景。  
+- **高效中文分词与命名实体识别开源项目 cutword**：<a href="https://github.com/liwenju0/cutword" target="_blank" rel="noopener">github.com/liwenju0/cutword</a>   
 - 关注开源生态在产业落地中的工程质量、性能与可维护性。
 
 **代表性贡献（节选）**  
