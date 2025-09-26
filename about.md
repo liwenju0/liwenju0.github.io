@@ -6,14 +6,14 @@ title: "关于：About"
 ### 个人简介
 专注自然语言处理与大语言模型落地，具备从模型设计、数据构建、训练微调、推理加速到工程部署的全栈能力。当前负责北京匠数科技 NLP 方向，长期聚焦大模型能力在政务、公考教育、内容审核与智能营销等业务中的规模化应用。
 
-**开源与社区**：活跃于开源社区，GitHub 账号 **liwenju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）。在 sglang、ragflow 等项目有多项 PR 贡献，聚焦推理优化与工程可用性提升。
+**开源与社区**：活跃于开源社区，GitHub 账号 **liwenju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">查看</a>）。在 sglang、ragflow 等项目有多项 PR 贡献，聚焦推理优化与工程可用性提升。
 
 ---
 
 ### 联系方式
-- **博客**：<a href="http://www.liwenju0.com" target="_blank" rel="noopener">liwenju0.com</a>  
-- **GitHub**：**liwenju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）  
-- **知乎**：<a href="https://www.zhihu.com/people/li-dan-ran-71" target="_blank" rel="noopener">知乎主页</a>
+- **博客**：<a href="http://www.liwenju0.com" target="_blank" rel="noopener">查看</a>  
+- **GitHub**：**liwenju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">查看</a>）  
+- **知乎**：<a href="https://www.zhihu.com/people/li-dan-ran-71" target="_blank" rel="noopener">查看</a>
 
 ---
 
@@ -95,7 +95,7 @@ title: "关于：About"
 ### 开源贡献与社区
 - **sglang PR（仓库内检索，含参与者）**：<a href="https://github.com/sgl-project/sglang/pulls?q=is%3Apr+involves%3Aliwenju0" target="_blank" rel="noopener">查看</a>  
 - **ragflow PR（仓库内检索，含参与者）**：<a href="https://github.com/InfiniFlow/ragflow/pulls?q=is%3Apr+involves%3Aliwenju0" target="_blank" rel="noopener">查看</a>  
-- **高效中文分词与命名实体识别开源项目 cutword**：<a href="https://github.com/liwenju0/cutword" target="_blank" rel="noopener">github.com/liwenju0/cutword</a>   
+- **高效中文分词与命名实体识别开源项目 cutword**：<a href="https://github.com/liwenju0/cutword" target="_blank" rel="noopener">查看</a> 
 - 关注开源生态在产业落地中的工程质量、性能与可维护性。
 
 **代表性贡献（节选）**  
