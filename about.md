@@ -6,13 +6,13 @@ title: "关于：About"
 ### 个人简介
 专注自然语言处理与大语言模型落地，具备从模型设计、数据构建、训练微调、推理加速到工程部署的全栈能力。当前负责北京匠数科技 NLP 方向，长期聚焦大模型能力在政务、公考教育、内容审核与智能营销等业务中的规模化应用。
 
-**开源与社区**：活跃于开源社区，GitHub 账号 **liwneju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）。在 sglang、ragflow 等项目有多项 PR 贡献，聚焦推理优化与工程可用性提升。
+**开源与社区**：活跃于开源社区，GitHub 账号 **liwenju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）。在 sglang、ragflow 等项目有多项 PR 贡献，聚焦推理优化与工程可用性提升。
 
 ---
 
 ### 联系方式
 - **博客**：<a href="http://www.liwenju0.com" target="_blank" rel="noopener">liwenju0.com</a>  
-- **GitHub**：**liwneju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）  
+- **GitHub**：**liwenju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）  
 - **知乎**：<a href="https://www.zhihu.com/people/li-dan-ran-71" target="_blank" rel="noopener">知乎主页</a>
 
 ---
@@ -95,10 +95,9 @@ title: "关于：About"
 ### 开源贡献与社区
 - **GitHub：liwneju0**（<a href="https://github.com/liwenju0" target="_blank" rel="noopener">github.com/liwenju0</a>）  
 - **sglang PR（仓库内检索，含参与者）**：<a href="https://github.com/sgl-project/sglang/pulls?q=is%3Apr+involves%3Aliwenju0" target="_blank" rel="noopener">查看</a>  
-- **sglang PR（全局检索）**：<a href="https://github.com/pulls?q=is%3Apr+author%3Aliwenju0+sglang" target="_blank" rel="noopener">查看</a>  
 - **ragflow PR（仓库内检索，含参与者）**：<a href="https://github.com/InfiniFlow/ragflow/pulls?q=is%3Apr+involves%3Aliwenju0" target="_blank" rel="noopener">查看</a>  
-- **ragflow PR（全局检索）**：<a href="https://github.com/pulls?q=is%3Apr+author%3Aliwenju0+ragflow" target="_blank" rel="noopener">查看</a>  
 - **开源项目 cutword**：<a href="https://github.com/liwenju0/cutword" target="_blank" rel="noopener">github.com/liwenju0/cutword</a>  
+  高效中文分词与命名实体识别工具，分词速度是 jieba 的 2 倍，基于 2024 年最新词典数据，支持自定义词典与升级词库，提供 NER 功能识别多种实体类型，适用于数据挖掘、搜索引擎、机器翻译等场景。  
 - 关注开源生态在产业落地中的工程质量、性能与可维护性。
 
 **代表性贡献（节选）**  
@@ -109,13 +108,5 @@ title: "关于：About"
   - 添加 embedding 获取方法，完善接口使用面  
   - 本地用例验证覆盖图像理解场景（“What’s in this image?” 示例）
 
----
 
-### 站内内容与近期更新
-- 文章索引：见站点导航的 `分类`、`标签` 与 `归档` 页面  
-- 最近更新：
-{% include recent_posts.html %}
 
----
-
-{% include comment.html %}
