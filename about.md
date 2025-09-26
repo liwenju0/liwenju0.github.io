@@ -99,12 +99,15 @@ title: "关于：About"
 - 关注开源生态在产业落地中的工程质量、性能与可维护性。
 
 **代表性贡献（节选）**  
-- sglang：PR #5383「Feature: add support kimi vl model」（<a href="https://github.com/sgl-project/sglang/pull/5383" target="_blank" rel="noopener">链接</a>）  
-  - 合入主仓主分支（2025-04-30），共 79 次提交，影响 13 个文件（+1,189 / −11）  
-  - 引入 Kimi-VL 多模态模型支持（VL 推理路径与配置）  
-  - 增补 Kimi-VL 配置，兼容现有 DeepSeek 配置风格  
-  - 添加 embedding 获取方法，完善接口使用面  
-  - 本地用例验证覆盖图像理解场景（“What’s in this image?” 示例）
+- **sglang：Kimi-VL多模态模型支持**（PR #5383，已合入主分支）
+  - **技术规模**：79次提交，影响13个文件（+1,189/-11行），获得核心维护者认可
+  - **核心贡献**：为sglang框架添加Kimi-VL多模态模型支持，实现图像理解能力
+  - **技术实现**：
+    * 模型配置集成：添加Kimi-VL模型配置，兼容现有DeepSeek配置风格
+    * 接口扩展：新增embedding获取方法，完善多模态推理接口
+    * 本地验证：实现图像理解测试用例，验证"What's in this image?"等场景
+  - **技术影响**：扩展sglang多模态推理能力，支持视觉-语言联合任务
+  - **社区认可**：通过Code Review，获得@zhyncs、@BBuf、@merrymercy等核心维护者认可并成功合入主分支
 
 
 
